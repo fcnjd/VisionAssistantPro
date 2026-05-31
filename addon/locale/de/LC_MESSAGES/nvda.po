@@ -1115,7 +1115,7 @@ msgstr "OpenAI-kompatibel"
 
 #: addon\globalPlugins\visionAssistant\__init__.py:2238
 msgid "Gemini Compatible"
-msgstr "Gimini kompatibel"
+msgstr "Gemini kompatibel"
 
 #. Translators: Label for Custom Model Name input
 #: addon\globalPlugins\visionAssistant\__init__.py:2243
