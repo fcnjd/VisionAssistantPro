@@ -1,134 +1,354 @@
 # Dokumentasi Vision Assistant Pro
 
+<!-- DOWNLOAD_COUNT_START --> Total Unduhan: 61.000+ <!-- DOWNLOAD_COUNT_END -->
+
 **Vision Assistant Pro** adalah asisten AI multimodal tingkat lanjut untuk NVDA. Add-on ini memakai mesin AI kelas dunia untuk membantu pembacaan layar cerdas, penerjemahan, dikte suara, dan analisis dokumen.
 
 _Add-on ini dirilis untuk komunitas dalam rangka memperingati Hari Internasional Penyandang Disabilitas._
 
 ## 1. Pengaturan & Konfigurasi
 
-Buka **Menu NVDA > Preferensi > Pengaturan > Vision Assistant Pro**.
+Buka **Menu NVDA > Preferensi > Pengaturan > Vision Assistant Pro**. Dialog pengaturan tersusun dalam 8 tab yang aksesibel: **Koneksi**, **Perilaku AI**, **Bahasa Terjemahan**, **Pembaca Dokumen**, **Video**, **CAPTCHA**, **Prompt**, dan **Lanjutan**.
 
-### 1.1 Pengaturan Koneksi
-- **Penyedia:** Pilih layanan AI yang ingin Anda gunakan. Penyedia yang didukung meliputi **Google Gemini**, **OpenAI**, **Mistral**, **Groq**, dan **Kustom** (server yang kompatibel dengan OpenAI seperti Ollama, LM Studio, Jan.ai, atau KoboldCPP).
-- **Catatan penting:** Kami sangat menyarankan **Google Gemini** untuk performa dan akurasi terbaik, terutama untuk analisis gambar dan file.
-- **Kunci API:** Wajib diisi. Anda dapat memasukkan beberapa kunci sekaligus, dipisahkan dengan koma atau baris baru, agar add-on bisa melakukan rotasi otomatis.
+### 1.1 Tab Koneksi
+- **Penyedia:** Pilih layanan AI yang ingin Anda gunakan. Penyedia yang didukung meliputi **Google Gemini**, **OpenAI**, **Mistral**, **Groq**, **MiniMax**, dan **Kustom** (server yang kompatibel dengan OpenAI seperti Ollama, LM Studio, Jan.ai, atau KoboldCPP).
+- **Kunci API:** Masukkan satu atau beberapa kunci API (dipisahkan dengan koma atau baris baru) untuk rotasi otomatis.
 - **Ambil Model:** Setelah kunci API dimasukkan, tekan tombol ini untuk mengunduh daftar model terbaru dari penyedia.
 - **Model AI:** Pilih model utama untuk obrolan umum dan analisis.
+- **Pengaturan Penyedia Kustom:** Konfigurasikan endpoint lokal atau kustom. Bagian ini mencakup **Siapkan AI Lokal** (pengaturan sekali klik untuk Ollama, LM Studio, Jan.ai, atau KoboldCPP) dan **Konfigurasi Endpoint Lanjutan**.
+- **Perutean Model Lanjutan (Khusus Tugas):** Anda dapat memilih model khusus dari daftar untuk tugas OCR, STT, TTS, Operator AI, Video, dan Asisten Langsung.
+- **Opsi Koneksi & Keluaran:** Atur URL Proksi, pemeriksaan pembaruan saat mulai, Bersihkan Markdown dalam Obrolan, salin respons AI ke papan klip, Keluaran Langsung (Tanpa Jendela Obrolan), dan Keluaran Langsung Asisten Langsung.
 
-### 1.2 Perutean Model Lanjutan
-*Tersedia untuk semua penyedia, termasuk Gemini, OpenAI, Groq, Mistral, dan Kustom.*
+### 1.2 Tab Perilaku AI
+- **Kreativitas (Temperature):** Mengatur keacakan dan kreativitas AI (dari 0,0 hingga 2,0). Nilai lebih rendah menghasilkan terjemahan dan OCR yang lebih konsisten serta akurat.
 
-> **Peringatan:** Pengaturan ini ditujukan untuk **pengguna tingkat lanjut**. Jika Anda belum yakin fungsi sebuah model, biarkan opsi ini **tidak dicentang**. Memilih model yang tidak cocok untuk suatu tugas, misalnya model khusus teks untuk fitur visi, dapat menyebabkan error dan menghentikan kerja add-on.
+### 1.3 Tab Bahasa Terjemahan
+- **Bahasa Sumber:** Pilih bahasa masukan bawaan.
+- **Bahasa Target:** Pilih bahasa utama tujuan terjemahan.
+- **Bahasa Respons AI:** Pilih bahasa untuk respons AI secara umum.
+- **Pertukaran Cerdas:** Menukar bahasa sumber dan target secara otomatis berdasarkan masukan yang terdeteksi.
 
-Centang **"Perutean Model Lanjutan (Khusus Tugas)"** untuk membuka kontrol yang lebih rinci. Dengan opsi ini, Anda dapat memilih model berbeda dari daftar dropdown untuk tiap tugas:
-- **Model OCR / Visi:** Pilih model khusus untuk menganalisis gambar.
-- **Speech-to-Text (STT):** Pilih model khusus untuk dikte atau transkripsi suara.
-- **Text-to-Speech (TTS):** Pilih model untuk membuat audio.
-- **Model Operator AI:** Pilih model khusus untuk tugas pengoperasian komputer secara otomatis.
-*Catatan: Fitur yang tidak didukung, misalnya TTS untuk Groq, akan disembunyikan otomatis.*
+### 1.4 Tab Pembaca Dokumen
+- **Mesin OCR:** Pilih **Chrome (Cepat)** untuk hasil cepat atau **AI (Lanjutan)** untuk mempertahankan tata letak dengan lebih baik.
+- **Ukuran Batch OCR:** Tentukan jumlah halaman per permintaan (atur ke 0 agar diproses dalam satu permintaan).
+- **Deskripsikan Gambar dalam Teks:** Aktifkan deskripsi gambar di antara teks saat mengekstrak teks dokumen.
+- **Ekspor Nomor Halaman:** Aktifkan nomor dan pemisah halaman pada keluaran dokumen multihalaman.
+- **Suara TTS:** Pilih gaya suara bawaan untuk pembuatan audio.
 
-### 1.3 Konfigurasi Titik Akhir Lanjutan (Penyedia Kustom)
-*Hanya tersedia saat penyedia "Kustom" dipilih.*
+### 1.5 Tab Video
+- **Ukuran Potongan Video:** Tentukan durasi segmen dalam menit untuk pembuatan Deskripsi Audio (atur ke 0 untuk memproses seluruh file).
+- **Tambahkan Daftar Karakter:** Tambahkan kamus karakter sebagai entri subtitel pertama.
+- **Tambahkan Penafian AI:** Sisipkan penafian AI di awal subtitel SRT video.
 
-> **Peringatan:** Bagian ini digunakan untuk konfigurasi API manual dan ditujukan bagi pengguna mahir yang menjalankan server lokal atau proksi. URL atau nama model yang salah dapat memutus koneksi. Jika Anda belum benar-benar memahami titik akhir ini, biarkan opsi ini **tidak dicentang**.
+### 1.6 Tab CAPTCHA
+- **Aktifkan Pemecah CAPTCHA Visual:** Aktifkan pemecahan tantangan visual otomatis (hCaptcha, reCAPTCHA).
+- **Metode CAPTCHA Teks:** Pilih antara menangkap **Objek Navigator** atau **Layar Penuh**.
 
-Centang **"Konfigurasi Titik Akhir Lanjutan"** untuk mengisi detail server secara manual. Berbeda dengan penyedia bawaan, di sini Anda harus **mengetik** URL dan nama model secara spesifik:
-- **URL Daftar Model:** Titik akhir untuk mengambil daftar model yang tersedia.
-- **URL Titik Akhir OCR/STT/TTS:** URL lengkap untuk layanan tertentu, misalnya `http://localhost:11434/v1/audio/speech`.
-- **Model Kustom:** Ketik nama model secara manual, misalnya `llama3:8b`, untuk setiap tugas.
+### 1.7 Tab Prompt
+- **Kelola Prompt:** Membuka dialog untuk menyesuaikan Prompt sistem bawaan atau membuat, mengedit, mengurutkan ulang, dan mempratinjau Prompt kustom dengan variabel dinamis seperti `[selection]` dan `[screen_fg_obj]`.
 
-### 1.3.1 Siapkan AI Lokal (Konfigurasi Satu Tindakan)
-Untuk memudahkan integrasi AI lokal yang sepenuhnya offline, tersedia tombol khusus **"Siapkan AI Lokal"** di dalam Pengaturan Penyedia Kustom.
-
-Jika Anda menjalankan server model AI lokal di komputer:
-1. Pilih **Kustom** sebagai Penyedia.
-2. Tekan tombol **Siapkan AI Lokal**.
-3. Pilih mesin AI lokal dari dialog yang aksesibel:
-   - **Ollama** (bawaan `http://127.0.0.1:11434`)
-   - **LM Studio** (bawaan `http://127.0.0.1:1234`)
-   - **Jan.ai** (bawaan `http://127.0.0.1:1337`)
-   - **KoboldCPP** (bawaan `http://127.0.0.1:5001`)
-4. Add-on akan langsung mengatur URL lokal, jenis API, dan mengambil model offline yang aktif untuk mengisi kotak pilihan **Model AI**.
-
-*Catatan tentang Jaringan & Proksi:* Mesin koneksi lokal ini memiliki mekanisme bypass proksi lanjutan. Walaupun VPN sistem atau proksi mode TUN sedang aktif, permintaan AI lokal akan melewatinya sepenuhnya, sehingga koneksi offline tetap stabil tanpa error 502 Bad Gateway.
-
-### 1.4 Preferensi Umum
-- **Mesin OCR:** Pilih **Chrome (Cepat)** untuk hasil cepat, atau **AI (Lanjutan)** untuk mempertahankan tata letak dengan lebih baik.
-    - *Catatan:* Jika Anda memilih "AI (Lanjutan)" tetapi penyedia aktif adalah OpenAI atau Groq, add-on akan mengarahkan gambar ke model visi dari penyedia aktif tersebut.
-- **Suara TTS:** Pilih gaya suara yang Anda inginkan. Daftar ini diperbarui secara dinamis berdasarkan penyedia aktif.
-- **Kreativitas (Temperature):** Mengatur seberapa acak jawaban AI. Nilai rendah lebih baik untuk terjemahan dan OCR yang akurat.
-- **URL Proksi:** Atur ini jika layanan AI dibatasi di wilayah Anda. Mendukung proksi lokal seperti `127.0.0.1` atau URL bridge.
+### 1.8 Tab Lanjutan & Pencatatan Global
+Buka tab **Lanjutan** untuk mengatur pencatatan global add-on:
+- **Aktifkan file log khusus:** Mencatat semua peristiwa operasional, lalu lintas API, dan error dari seluruh modul add-on ke file terpisah (`vision_assistant.log`).
+- **Tingkat Log:** Pilih tingkat perincian antara **Debug (Semua Detail)**, **Info (Informasi Umum)**, **Peringatan (Hanya Peringatan)**, dan **Error (Hanya Error)**.
+- **Simpan Log Selama:** Atur masa penyimpanan dari 1 jam hingga 90 hari. Entri yang lebih lama akan dibersihkan secara otomatis.
+- **Kontrol Pengelolaan Log:** Gunakan **Buka File Log**, **Buka Folder Log**, atau **Bersihkan File Log** untuk memeriksa atau membersihkan data log tanpa memulai ulang NVDA dan tanpa mengganggu log standar NVDA.
 
 ## 2. Lapisan Perintah & Pintasan
 
 Untuk mencegah konflik tombol keyboard, add-on ini memakai **Lapisan Perintah**.
-1. Tekan **NVDA + Shift + V** (Tombol Utama) untuk mengaktifkan lapisan. Anda akan mendengar bunyi bip.
+1. Tekan **NVDA + Shift + V** (Tombol Utama) untuk mengaktifkan lapisan (Anda akan mendengar bunyi bip).
 2. Lepaskan tombol, lalu tekan salah satu tombol tunggal berikut:
 
 | Tombol        | Fungsi                 | Deskripsi                                                                  |
 |---------------|------------------------|----------------------------------------------------------------------------|
-| **Shift + A** | **Operator AI**        | **Operasi otomatis:** Minta AI melakukan tugas di layar Anda.              |
-| **E**         | **UI Explorer**        | **Klik interaktif:** Mengenali dan mengklik elemen UI di aplikasi apa pun. |
+| **Shift + A** | **Operator AI**        | **Operasi Mandiri:** Minta AI melakukan tugas di layar Anda. Tekan lagi untuk langsung membatalkan operasi yang sedang berjalan. |
+| **E**         | **UI Explorer**        | **Klik Interaktif:** Mengenali dan mengklik elemen UI di aplikasi apa pun. |
 | **T**         | Penerjemah Cerdas      | Menerjemahkan teks di kursor navigator atau teks yang dipilih.             |
 | **Shift + T** | Penerjemah Papan Klip  | Menerjemahkan isi papan klip saat ini.                                     |
 | **R**         | Penyempurna Teks       | Meringkas, memperbaiki tata bahasa, menjelaskan, atau menjalankan **Prompt Kustom**. |
-| **V**         | Visi Objek             | Mendeskripsikan objek navigator saat ini.                                  |
+| **V**         | Visi Objek             | Mendeskripsikan Objek Navigator saat ini.                                  |
 | **O**         | Visi Layar Penuh       | Menganalisis tata letak dan isi seluruh layar.                             |
-| **Shift + V** | Analisis Video Online  | Menganalisis video **YouTube**, **Instagram**, **TikTok**, atau **Twitter (X)**. |
-| **D**         | Pembaca Dokumen        | Pembaca lanjutan untuk PDF dan gambar, lengkap dengan pilihan rentang halaman. |
-| **F**         | **Aksi File Cerdas**   | Mengenali konteks dari file gambar, PDF, atau TIFF yang dipilih.           |
-| **A**         | Transkripsi Audio      | Mengubah file MP3, WAV, atau OGG menjadi teks.                             |
-| **C**         | Pemecah CAPTCHA        | Menangkap dan memecahkan CAPTCHA, termasuk pada portal pemerintah.         |
+| **Shift + V** | Analisis Video         | Menganalisis file video lokal atau video online **YouTube**, **Instagram**, **TikTok**, atau **Twitter (X)**. |
+| **Control + V** | Perekaman Video Lokal | Merekam video tanpa suara dari layar Anda dan menganalisis tindakan serta tata letaknya. |
+| **D**         | Pembaca Dokumen        | Pembaca lanjutan untuk PDF dan gambar dengan pilihan rentang halaman.      |
+| **F**         | **Tindakan File Cerdas** | Mengenali konteks dari file gambar, PDF, atau TIFF yang dipilih.          |
+| **M**         | Transkripsi dan Sulih Suara Media | Mentranskripsikan atau menyulihsuarakan file audio/video ke bahasa target. |
+| **C**         | Pemecah CAPTCHA        | Menangkap dan memecahkan CAPTCHA.                                          |
+| **Shift + C** | Obrolan Langsung       | Membuka antarmuka obrolan berbasis teks secara langsung dengan AI.         |
 | **S**         | Dikte Cerdas           | Mengubah ucapan menjadi teks. Tekan untuk mulai merekam, tekan lagi untuk berhenti dan mengetik hasilnya. |
-| **I**         | Laporan Status         | Mengumumkan progres saat ini, misalnya "Memindai..." atau "Diam".        |
-| **L**         | **Label Objek**        | **Pelabelan AI semantik:** Memberi label permanen pada elemen atau ikon yang sedang fokus. |
-| **Shift + L** | **Kelola/Pindai Label** | Membuka Pengelola Label jika label sudah ada, atau memindai aplikasi untuk elemen tanpa nama. |
+| **Control+T** | Terjemahan Suara       | Mentranskripsikan, menerjemahkan, lalu mengetik hasil sesuai pengaturan bahasa. |
+| **Control+L** | **Asisten Langsung**   | **Kopilot Real-time (Khusus Gemini):** Memulai atau mengakhiri percakapan suara dan layar langsung dengan asisten AI. |
+| **I**         | Laporan Status         | Mengumumkan progres saat ini (misalnya, "Memindai...", "Siaga").           |
+| **L**         | **Label Objek**        | **Pelabelan AI Semantik:** Memberi label permanen pada elemen/ikon fokus saat ini. |
+| **Shift + L** | **Kelola/Pindai Label** | Membuka Pengelola Label (jika label sudah ada) atau memindai aplikasi untuk elemen tanpa nama. |
 | **U**         | Cek Pembaruan          | Mengecek versi terbaru add-on di GitHub secara manual.                     |
 | **Space**     | Buka Hasil Terakhir    | Menampilkan respons AI terakhir di dialog obrolan untuk ditinjau atau ditindaklanjuti. |
 | **H**         | Bantuan Perintah       | Menampilkan daftar semua pintasan yang tersedia.                           |
+| **Alt + S**   | Pengaturan             | Membuka dialog pengaturan Vision Assistant Pro secara instan.               |
+| **Alt + Q**   | Laporan Kunci Kuota Habis | Melaporkan jumlah kunci API Gemini yang telah melebihi kuota harian beserta waktu pengaturannya ulang. |
+| **Alt + M**   | Audit Perutean         | Melaporkan model AI yang saat ini dipilih dalam perutean lanjutan.         |
+| **Up / Down** | Navigasi Pengaturan Cepat | Berpindah antar kategori Pengaturan Cepat di dalam lapisan.              |
+| **Left / Right** | Ubah Pengaturan Cepat | Mengubah nilai Pengaturan Cepat yang sedang dipilih.                       |
 
-### 2.1 Pintasan Pembaca Dokumen (Di Dalam Penampil)
+## 3. Operator AI - Kontrol Komputer Mandiri
+
+**Operator AI** mengubah Vision Assistant Pro dari pembaca pasif menjadi asisten aktif yang dapat berinteraksi dengan komputer untuk Anda. Anda dapat memintanya mendeskripsikan layar, menjawab pertanyaan tentang apa yang dilihatnya, atau bahkan mengambil kendali - mengklik tombol, menyeret item, mengetik teks, dan menavigasi aplikasi dengan perintah bahasa alami.
+
+Keunggulan terbesarnya adalah kemampuan bekerja di perangkat lunak yang sama sekali tidak aksesibel. Jika Anda terjebak di aplikasi kustom, desktop jarak jauh, atau situs web yang membuat pembaca layar benar-benar diam, Operator AI tetap dapat membantu. Karena "melihat" layar secara visual, fitur ini dapat menemukan, membaca, dan berinteraksi dengan elemen tanpa label aksesibilitas.
+
+### Cara Kerja
+1. Tekan **NVDA + Shift + V**, lalu **Shift + A** (atau gunakan pintasan langsung) untuk membuka dialog Operator AI.
+2. Ketik tindakan yang Anda inginkan dengan bahasa biasa, misalnya "Klik tombol Simpan", "Apa isi pesan error?", atau "Ubah nama file menjadi final.pdf".
+3. AI akan menganalisis layar, mengenali elemen yang sesuai, lalu menjalankan tindakan atau memberikan jawaban. Jika tugas memerlukan beberapa langkah, Operator AI akan terus bekerja hingga selesai.
+4. Tekan **Shift + A** lagi kapan saja untuk langsung membatalkan operasi yang sedang berlangsung.
+
+### Tindakan yang Didukung
+Operator AI memahami beragam perintah:
+- **Deskripsikan & Jawab:** "Deskripsikan tata letak layar" atau "Apa isi pesan error?"
+- **Klik:** "Klik tombol Simpan"
+- **Klik Kanan:** "Klik kanan file tersebut"
+- **Klik Ganda:** "Klik ganda dokumen tersebut"
+- **Seret & Lepas:** "Seret dokumen ke folder Arsip"
+- **Ketik:** "Ketik 'Hello World' di kotak pencarian"
+- **Gulir:** "Gulir ke bawah tiga kali"
+- **Tekan Tombol:** "Tekan Enter", "Tekan Tab", "Tekan Escape"
+- **Tugas Bertahap:** "Buka File Explorer, cari laporan, lalu ubah namanya menjadi final.pdf"
+
+### Catatan Penting
+- **Peringatan Penggunaan API:** Karena Operator AI perlu "melihat" apa yang terjadi di layar, fitur ini mengirim tangkapan layar beresolusi tinggi pada setiap langkah. Penggunaan yang sering akan menghabiskan kuota API lebih cepat daripada fitur berbasis teks.
+- **Aplikasi Administrator:** Jika NVDA tidak dijalankan dengan hak Administrator, Operator AI mungkin tidak dapat berinteraksi dengan jendela yang memerlukan izin lebih tinggi. Ini adalah batasan keamanan Windows, bukan bug add-on.
+- **Praktik Terbaik:** Berikan perintah yang jelas dan spesifik. "Klik tombol Kirim berwarna biru di bagian bawah formulir" hampir selalu lebih efektif daripada sekadar "Klik tombol".
+
+## 4. Analisis Video & Deskripsi Audio
+
+> **Catatan:** Fitur Analisis Video dan Deskripsi Audio didukung sepenuhnya oleh penyedia **Google Gemini**. Pastikan penyedia aktif Anda di pengaturan add-on diatur ke Google Gemini.
+
+Vision Assistant Pro memperkenalkan kemampuan pemrosesan video andal yang dirancang khusus untuk pengguna tunanetra. Add-on ini dapat menganalisis video online dan rekaman layar lokal untuk memberikan deskripsi visual yang sangat mendetail dan menghasilkan skrip Deskripsi Audio (SRT) profesional.
+
+### 4.1 Perekaman Layar Lokal (Control + V)
+Jika Anda menemukan video tanpa suara, animasi, atau tutorial di layar, Anda dapat merekamnya secara langsung:
+1. Tekan **NVDA + Shift + V** untuk masuk ke Lapisan Perintah, lalu tekan **Control + V**.
+2. Add-on akan merekam layar Anda secara diam-diam di latar belakang.
+3. Tekan **Control + V** lagi untuk menghentikan perekaman.
+4. AI kemudian akan menganalisis segmen video yang direkam dan memberikan deskripsi yang sangat mendetail tentang pemandangan, karakter, dan tindakan.
+
+### 4.2 Analisis Video (Shift + V)
+Anda dapat menganalisis file video lokal maupun video online. Cukup pilih file video lokal di Windows Explorer, atau salin tautan video online ke papan klip Anda. Anda juga dapat menekan **Shift + V** di mana saja (seperti di dalam pemutar media) untuk membuka dialog tempat Anda dapat menelusuri file video atau menempelkan URL secara manual.
+- **Platform Online yang Didukung:** YouTube, Instagram, TikTok, dan Twitter (X).
+- AI akan mendeteksi file lokal atau URL secara otomatis, memproses video, dan memberikan deskripsi visual serta ringkasan audio yang komprehensif.
+
+### 4.3 Pembuatan Deskripsi Audio (SRT)
+Untuk pengalaman yang lebih terstruktur, add-on dapat menghasilkan skrip Deskripsi Audio profesional dalam format standar SubRip (SRT).
+- **Pengaturan Waktu Jeda Cerdas:** AI mendengarkan trek audio dan menempatkan deskripsi visual pada jeda hening alami untuk meminimalkan tumpang tindih dengan dialog.
+- **Pelacakan Karakter:** Mesin melakukan tahap awal untuk mengekstrak karakter yang berbeda berdasarkan fitur wajah yang tidak berubah. Ini membangun kamus global untuk melacak dan melabeli karakter secara akurat di berbagai adegan tanpa kebingungan.
+- **OCR Teks Verbatim:** Teks apa pun yang muncul di layar (papan tanda, ponsel, kredit) dikutip secara tepat apa adanya.
+- **Cara Menggunakan:** Untuk mendengarkan subtitel yang dihasilkan, cukup letakkan file `.srt` di folder yang sama dengan file video Anda dan beri nama yang sama persis. Kemudian, konfigurasikan pemutar media Anda (misalnya, VLC atau PotPlayer) untuk mengarahkan teks subtitel langsung ke pembaca layar atau mesin TTS Anda selama pemutaran.
+
+### 4.4 Narasi Audio Tersinkron (Ekspor MP3)
+Selain membuat file SRT berbasis teks, add-on ini berfungsi sebagai alat produksi Deskripsi Audio lengkap dengan mengubah deskripsi menjadi ucapan dan mencampurnya dengan video. Anda dapat memilih **Gemini Live TTS** sebagai mesin suara. Mesin ini menggunakan Gemini Live API untuk menghasilkan narasi suara yang sangat realistis tanpa batas. Saat membuat MP3 untuk file video lokal, tersedia beberapa mode pencampuran:
+- **AD Standar (Campur Suara):** Narasi diputar langsung di atas audio video. Anda akan ditanya apakah ingin menerapkan **Peredaman Audio** (menurunkan volume latar belakang selama deskripsi) agar narasi terdengar jelas.
+- **AD Diperpanjang (Jeda Audio):** Mesin menjeda audio video asli selama deskripsi, memastikan Anda tidak pernah melewatkan satu kata pun dari dialog asli atau narasi AI.
+- **Video YouTube:** Untuk sumber YouTube (yang tidak diunduh secara lokal), ekspor MP3 hanya akan berisi trek suara AI yang disinkronkan tanpa audio latar belakang video.
+
+## 5. Transkripsi dan Sulih Suara Media (M)
+Transkripsi Audio telah dibangun ulang sepenuhnya agar mendukung file audio dan video (MP3, WAV, MP4, MKV, dan lainnya). Tekan **M** di Lapisan Perintah untuk memilih file media dan salah satu dari 3 mode operasi berikut:
+1. **Transkripsikan (Bahasa Asli):** Mentranskripsikan ucapan secara akurat dalam bahasa aslinya.
+2. **Transkripsikan dan Terjemahkan (Bahasa Target):** Mentranskripsikan ucapan lalu menerjemahkannya ke bahasa target yang telah Anda atur.
+3. **Sulih Suara dan Terjemahkan (Bahasa Target)** *(Khusus Gemini):* Mentranskripsikan ucapan, menerjemahkannya ke bahasa target, lalu membuat sulih suara dengan mesin TTS add-on.
+
+## 6. Pembaca Dokumen & Gambar Lanjutan
+
+Vision Assistant Pro menyertakan Pembaca Dokumen yang sangat dioptimalkan yang dirancang untuk PDF multi-halaman, gambar kompleks, dan bahkan format HEIC iPhone.
+
+### 6.1 Pemrosesan Batch & Melanjutkan
+Anda tidak perlu membaca dokumen besar sekaligus. Masukkan rentang halaman (misalnya, `1-20`), dan AI akan memproses semua halaman di latar belakang. Jika NVDA crash atau Anda menghentikan pemindaian, add-on akan mengingat progres Anda dan menawarkan untuk **Melanjutkan (Resume)** tepat di tempat Anda berhenti!
+
+### 6.2 Tindakan File Cerdas
+Anda tidak selalu harus membuka dokumen terlebih dahulu. Di Windows File Explorer, cukup sorot PDF atau gambar dan tekan **D** (Pembaca Dokumen) atau **F** (Tindakan File Cerdas) di dalam Lapisan Perintah. Add-on akan langsung melewati dialog file dan mulai memproses file yang disorot.
+
+### 6.3 Pintasan Penampil Dokumen
+Ketika jendela Pembaca Dokumen terbuka, Anda dapat menggunakan pintasan berikut:
 - **Ctrl + PageDown:** Pindah ke halaman berikutnya.
 - **Ctrl + PageUp:** Pindah ke halaman sebelumnya.
-- **Alt + A:** Membuka dialog obrolan untuk bertanya tentang dokumen.
-- **Alt + R:** Memaksa **Pindai ulang dengan AI** memakai penyedia aktif.
-- **Alt + G:** Membuat dan menyimpan file audio berkualitas tinggi (WAV/MP3). *Disembunyikan jika penyedia tidak mendukung TTS.*
-- **Alt + S / Ctrl + S:** Menyimpan teks hasil ekstraksi sebagai file TXT atau HTML.
+- **Alt + A:** Buka dialog obrolan untuk mengajukan pertanyaan tentang dokumen.
+- **Alt + R:** Paksa **Pindai ulang dengan AI** menggunakan penyedia aktif Anda.
+- **Alt + G:** Hasilkan dan simpan file audio berkualitas tinggi (WAV/MP3). *(Disembunyikan jika penyedia tidak mendukung TTS).*
+- **Alt + S / Ctrl + S:** Simpan teks hasil ekstraksi sebagai file TXT atau HTML.
 
-## 3. Prompt Kustom & Variabel
+## 7. Pelabelan AI Semantik & UI Explorer
+
+Terjebak dalam aplikasi dengan banyak "tombol tanpa label"? Mesin Pelabelan AI Semantik menyelesaikannya secara permanen.
+
+### 7.1 Pelabelan Objek Permanen (L)
+Fokuskan pembaca layar Anda pada grafik atau tombol tanpa label dan tekan **L** di Lapisan Perintah. AI akan melihat tombol tersebut secara visual, menentukan fungsinya, dan menerapkan label permanen.
+*Berbeda dengan alat pelabelan pembaca layar lama, add-on ini menggunakan sistem hibrida "Object Signature" (AutomationId/ControlID) yang canggih. Label kustom Anda akan tetap bertahan meskipun jendela diubah ukurannya, monitor dipindahkan, dan aplikasi diperbarui!*
+
+### 7.2 Pemindaian Aplikasi Penuh (Shift + L)
+Tekan **Shift + L** untuk memindai seluruh jendela aktif sekaligus. AI akan menemukan semua elemen tanpa label dan menamainya secara cerdas sekaligus. Anda nantinya dapat mengelola, mengganti nama, atau menghapus label ini secara massal dari Pengelola Label bawaan.
+
+### 7.3 UI Explorer (E)
+Perlu berinteraksi dengan suatu elemen tanpa mencarinya secara manual? Tekan **E** untuk mengaktifkan UI Explorer. AI akan memindai layar dan menghasilkan daftar yang aksesibel dari setiap elemen yang dapat diklik (mengabaikan gangguan sistem seperti taskbar). Pilih item dari daftar, dan add-on akan langsung mengkliknya untuk Anda.
+
+## 8. Asisten Suara Langsung
+
+Asisten Langsung mengubah Vision Assistant Pro menjadi kopilot interaktif real-time.
+*(Catatan: Fitur ini eksklusif untuk Google Gemini dan penyedia Kustom yang kompatibel dengan Gemini).*
+
+- **Aktivasi:** Tekan **Control + L** di Lapisan Perintah untuk membuka dialog Asisten Langsung.
+- **Interaksi Real-time:** Bicaralah secara alami melalui mikrofon Anda. AI akan mendengarkan suara Anda dan melihat layar aktif Anda secara bersamaan. Anda dapat mengajukan pertanyaan seperti "Apa yang sedang saya lihat?" atau "Bacakan paragraf ketiga untuk saya."
+- **Kustomisasi:** Di dalam dialog, Anda dapat mengubah Gaya Suara AI (misalnya, Profesional, Ramah, Ceria) dan menyesuaikan "Kedalaman Berpikir" (Thinking Depth) untuk mengontrol seberapa mendalam analisisnya sebelum menjawab.
+
+## 9. Prompt Kustom & Variabel
 
 Anda dapat mengelola prompt di **Pengaturan > Prompt > Kelola Prompt...**.
 
 ### Variabel yang Didukung
-- `[selection]`: Teks yang sedang dipilih.
-- `[clipboard]`: Isi papan klip.
-- `[screen_obj]`: Tangkapan layar objek navigator.
-- `[screen_full]`: Tangkapan layar penuh.
-- `[file_ocr]`: Memilih file gambar/PDF untuk ekstraksi teks.
-- `[file_read]`: Memilih dokumen untuk dibaca (TXT, kode, PDF).
-- `[file_audio]`: Memilih file audio untuk dianalisis (MP3, WAV, OGG).
+- `[selection]`: Teks yang dipilih saat ini.
+- `[clipboard]`: Konten papan klip.
+- `[clipboard_image]`: Gambar di papan klip saat ini.
+- `[screen_obj]`: Tangkapan layar dari objek navigator.
+- `[screen_fg_obj]`: Tangkapan layar jendela aktif di latar depan.
+- `[screen_full]`: Tangkapan layar seluruh layar.
+- `[file_ocr]`: Pilih file gambar/PDF untuk ekstraksi teks.
+- `[file_read]`: Pilih dokumen untuk dibaca (TXT, Kode, PDF).
+- `[file_audio]`: Pilih file audio untuk analisis (MP3, WAV, OGG).
+- `{target_lang}`: Bahasa target saat ini.
+- `{source_lang}`: Bahasa sumber saat ini.
+- `{response_lang}`: Bahasa respons AI saat ini.
+- `{swap_target}`: Bahasa cadangan untuk terjemahan tukar cerdas.
+- `{swap_instruction}`: Blok instruksi terjemahan tukar cerdas.
+
+## 10. Kasus Penggunaan di Dunia Nyata (Fitur mana yang harus saya gunakan?)
+
+Vision Assistant Pro dilengkapi dengan berbagai alat canggih. Berikut adalah beberapa skenario umum untuk membantu Anda memilih fitur yang tepat:
+
+- **Skenario: Anda ingin memahami tata letak lengkap dari jendela yang rumit atau aplikasi yang tidak aksesibel.**
+  *Solusi:* Tekan **O** (Visi Layar Penuh). AI akan menganalisis seluruh layar dan mendeskripsikan secara tepat di mana elemen, teks, dan tombol diposisikan.
+
+- **Skenario: Anda menemukan gambar di halaman web atau grafik tanpa label di dokumen.**
+  *Solusi:* Pindahkan objek navigator Anda ke grafik tersebut dan tekan **V** (Visi Objek). AI akan mendeskripsikan secara spesifik apa isi gambar tersebut.
+
+- **Skenario: Anda ingin menonton film atau klip video dengan deskripsi audio.**
+  *Solusi:* Tekan **Shift + V** pada video Anda dan pilih **"Buat Deskripsi Audio (File SRT)"**. Setelah selesai, klik **"Buat Narasi Tersinkron (MP3)"** dan pilih **"AD Diperpanjang"**. Add-on akan membuat trek audio yang menjeda dialog film secara cerdas untuk mendeskripsikan adegan visual.
+
+- **Skenario: Anda menemukan aplikasi yang penuh dengan "tombol tanpa label".**
+  *Solusi:* Tekan **L** untuk memberi label pada tombol tertentu menggunakan AI secara permanen. Atau, tekan **Shift + L** untuk memindai dan memberi label pada seluruh jendela sekaligus. Jika Anda hanya ingin mengklik sesuatu dengan cepat, tekan **E** (UI Explorer) untuk mendapatkan daftar semua item yang dapat diklik.
+
+- **Skenario: Anda perlu melewati CAPTCHA yang tidak aksesibel.**
+  *Solusi:* Tekan **C** (Pemecah CAPTCHA). AI akan secara otomatis menangkap CAPTCHA, memecahkannya, dan memasukkan jawabannya ke kolom yang benar.
+
+- **Skenario: Anda ingin membaca dokumen PDF panjang sebanyak 50 halaman.**
+  *Solusi:* Tekan **D** (Pembaca Dokumen), atur penyedia Anda ke Google Gemini, dan masukkan rentang halaman `1-50`. Add-on akan mengekstrak teks secara akurat di latar belakang.
+
+- **Skenario: Anda sedang menonton tutorial video tanpa suara atau animasi di layar Anda.**
+  *Solusi:* Tekan **Control + V** untuk mulai merekam layar. Biarkan tutorial berjalan, lalu tekan **Control + V** lagi. AI akan menjelaskan dengan tepat apa yang didemonstrasikan.
+
+- **Skenario: Anda menemukan error tak terduga, kegagalan koneksi API, atau ingin mendiagnosis masalah pada server lokal kustom.**
+  *Solusi:* Buka **Pengaturan > Lanjutan**, centang **"Aktifkan file log khusus"**, lalu atur **Tingkat Log** ke **"Debug"**. Ulangi tindakan yang bermasalah, kemudian pilih **"Buka File Log"** untuk memeriksa detail teknis atau melampirkan `vision_assistant.log` pada laporan dukungan.
 
 ***
-**Catatan:** Koneksi internet aktif diperlukan untuk semua fitur AI. Dokumen multi-halaman akan diproses otomatis.
+**Catatan:** Koneksi internet aktif diperlukan untuk semua fitur AI. Dokumen multi-halaman diproses secara otomatis.
 
-## 4. Dukungan & Komunitas
+## 11. Dukungan & Komunitas
 
-Ikuti kabar terbaru, fitur baru, dan rilis terbaru:
-- **Kanal Telegram:** [t.me/VisionAssistantPro](https://t.me/VisionAssistantPro)
+Ikuti perkembangan berita terbaru, fitur, dan rilis:
+- **Saluran Telegram:** [t.me/VisionAssistantPro](https://t.me/VisionAssistantPro)
 - **GitHub Issues:** Untuk laporan bug dan permintaan fitur.
 
-## 5. Pendukung Proyek
+### Melaporkan Bug & Log
+Saat meminta dukungan, sertakan penyedia AI, model, dan versi NVDA. Untuk masalah koneksi atau crash, aktifkan file log khusus di **Pengaturan > Lanjutan**, ulangi masalahnya, lalu lampirkan `vision_assistant.log`.
+
+## 12. Pendukung Proyek
 
 Terima kasih sebesar-besarnya kepada anggota komunitas yang mendukung pengembangan dan pemeliharaan proyek ini melalui kontribusi finansial:
 
 *   **@Alyabani94**
 *   **Ali Alamri**
 *   **Ilya**
+*   **Anonymous Supporter** (`UQDd...CnMY`)
+*   **leonardo0216**
+*   **Sergei Fleytin**
+*   **Suman Gayen**
 
 *Jika Anda ingin mendukung proyek secara finansial dan ingin nama Anda ditampilkan di sini, buka opsi **Donasi** di menu Tools NVDA (submenu Vision Assistant) atau pada proses pengaturan setelah instalasi.*
 
-
 ---
+## Perubahan untuk 2026.08.06
+
+*   **Pelabelan di UI Explorer**: Kini Anda dapat menambahkan label langsung ke elemen yang ditemukan di UI Explorer. Tombol baru "Tambahkan Label" telah tersedia. Antarmuka tetap terbuka dan mempertahankan fokus, sehingga Anda dapat memberi label pada beberapa objek dengan cepat tanpa gangguan.
+*   **Peningkatan Lapisan Pengaturan Cepat**: Lapisan Vision Assistant (`Insert+Shift+V`) kini tetap aktif dan sangat interaktif. Gunakan panah `Up/Down` untuk berpindah di antara Pengaturan Cepat (Penyedia, Model, Bahasa Respons AI, Model TTS), dan panah `Left/Right` untuk langsung mengubah nilainya dengan umpan balik suara yang ringkas dan cerdas. Pilihan langsung diterapkan, termasuk mengaktifkan Perutean Model Lanjutan secara otomatis bila diperlukan, dan lapisan tetap aktif selama Anda melakukan konfigurasi.
+*   **Obrolan Langsung (`Shift+C`)**: Menambahkan perintah baru ke lapisan. Tekan `Shift+C` untuk langsung membuka jendela "Obrolan Langsung". Antarmuka percakapan berbasis teks yang bersih ini memungkinkan Anda langsung mengobrol dengan AI tanpa harus memulai dari gambar atau dokumen.
+*   **Pemanggilan Riwayat Obrolan yang Andal**: Memperbaiki bug besar yang membuat riwayat obrolan lanjutan hilang ketika `Space` ditekan untuk membuka hasil terakhir. Kini add-on melacak percakapan secara global. Jika Anda mengobrol, menutup dialog, lalu menekan `Space`, seluruh riwayat percakapan dua arah akan dipulihkan dengan sempurna. Fitur ini berlaku untuk Obrolan Langsung, Analisis Visi, Obrolan Dokumen, dan Terjemahan.
+*   **Deskripsi Gambar dalam Teks OCR**: Menambahkan fitur opsional untuk mendeskripsikan gambar di antara teks selama OCR dokumen. Anda dapat mengubah pengaturan ini di pengaturan OCR add-on, di opsi Pembaca Dokumen sebelum ekstraksi, atau secara cepat melalui lapisan Pengaturan Cepat.
+*   **Terjemahan Suara (`Control+T`)**: Menambahkan fitur baru yang canggih. Diktekan ucapan untuk langsung menerjemahkan dan mengetik hasilnya dengan AI berdasarkan bahasa sumber dan target yang telah Anda atur.
+*   **Peningkatan Pengunduh Pembaruan**: Dialog pengunduhan pembaruan kini menampilkan progres dalam persentase dengan benar. Bug yang memunculkan pesan semu "Mengunduh pembaruan" setelah instalasi dibatalkan juga telah diperbaiki.
+*   **Peningkatan Pengunduh eSpeak-NG**: Menambahkan pelacakan progres dalam persentase untuk unduhan eSpeak-NG.
+*   **Ketahanan OCR Batch**: Memperbaiki masalah pada OCR PDF batch yang menghentikan proses jika kuota kunci API aktif habis di tengah jalan. Kini add-on otomatis beralih ke kunci berikutnya yang tersedia dan melanjutkan proses.
+*   **Dukungan CAPTCHA Visual**: Menambahkan dukungan yang andal untuk memecahkan CAPTCHA visual. Add-on mencoba memecahkan tantangan gambar kompleks seperti hCaptcha dan reCAPTCHA secara otomatis, sehingga formulir web yang sulit menjadi jauh lebih aksesibel.
+*   **Perombakan Transkripsi Audio**: Modul Transkripsi Audio telah dibangun ulang sepenuhnya dan kini mendukung file audio maupun video. Tersedia 3 mode operasi: "Transkripsikan (Bahasa Asli)", "Transkripsikan dan Terjemahkan (Bahasa Target)", serta opsi baru "Sulih Suara dan Terjemahkan (Bahasa Target)" khusus Gemini yang membuat sulih suara terjemahan dari ucapan asli.
+*   **Nomor Halaman Opsional di Pembaca Dokumen**: Menambahkan pengaturan untuk mengaktifkan atau menonaktifkan nomor dan pemisah halaman pada keluaran dokumen multihalaman. Opsi ini dapat dikelola dari pengaturan utama atau diubah langsung melalui lapisan Pengaturan Cepat. Fitur berlaku untuk ekspor file teks/HTML dan jendela "Tampilkan Terformat", sehingga dokumen gabungan dapat dibaca dengan lancar.
+*   **Gemini Live TTS Tanpa Batas untuk Deskripsi Video**: Kini Anda dapat memilih "Gemini Live TTS" sebagai mesin suara saat membuat Narasi Audio Tersinkron (MP3) untuk video. Gemini Live API menghasilkan Deskripsi Audio berkualitas tinggi tanpa batas karakter atau durasi.
+*   **Modularisasi Basis Kode**: Struktur add-on dirombak dari satu file menjadi arsitektur modular dengan beberapa file agar lebih mudah dipelihara.
+*   **Desain Ulang Antarmuka Pengaturan**: Dialog Pengaturan didesain ulang sepenuhnya dengan antarmuka modern berbasis tab, menggantikan tata letak berkelompok. Susunan baru lebih teratur dan mudah dinavigasi tanpa menghilangkan opsi yang sudah ada.
+*   **Pencatatan Global & File Khusus**: Menambahkan sistem pencatatan global opsional di tab pengaturan "Lanjutan" yang baru. Sistem ini otomatis mencatat peristiwa operasional, lalu lintas API, dan error dari seluruh modul add-on ke file khusus (`vision_assistant.log`). Tersedia tingkat perincian log yang dapat diatur (Debug, Info, Peringatan, Error), masa penyimpanan otomatis (1 jam hingga 90 hari), serta kontrol untuk membuka atau membersihkan log langsung dari pengaturan tanpa memengaruhi performa atau log NVDA.
+*   **Pelacakan Progres Unggahan Gemini**: Menambahkan pengumuman progres persentase secara real-time saat mengunggah file besar (video, audio, dokumen) ke Google Gemini API.
+
+## Perubahan untuk 2026.07.15
+
+*   **Penyaringan Model API Cerdas**: Perombakan total sistem penyaringan model untuk menggunakan pendekatan blacklist murni alih-alih whitelist. Menambahkan kata kunci penyaringan yang lebih kuat (`embedding`, `bison`, `gecko`, `audio`, `realtime`, `babbage`, `moderation`, `deep`, `antigravity`, `computer`) untuk memastikan menu dropdown model obrolan utama tetap bersih dan tahan masa depan, sementara tetap menjaga semua model khusus dapat diakses di bagian Perutean Lanjutan.
+*   **Pencarian Perutean Lanjutan**: Semua dropdown Perutean Model Lanjutan (OCR, STT, TTS, Operator, Video, Live) dan pemilih Varian eSpeak sekarang sepenuhnya dapat dicari. Anda dapat mengetik dengan cepat untuk menyaring dan menemukan model atau varian yang Anda inginkan.
+*   **Pintasan Lapisan Perintah Baru**:
+    *   **Pengaturan (`Alt + S`)**: Membuka dialog pengaturan Vision Assistant Pro secara instan.
+    *   **Laporan Kunci Kuota Habis (`Alt + Q`)**: Melaporkan jumlah persis kunci API Gemini yang telah melebihi kuota harian mereka, mengidentifikasi model spesifik mana yang kuotanya habis, dan mengumumkan waktu reset persisnya.
+    *   **Audit Perutean (`Alt + M`)**: Mengaudit dan mengumumkan konfigurasi Perutean Lanjutan Anda saat ini, membacakan model mana yang aktif dipilih untuk tugas-tugas khusus (melewati pengaturan default).
+*   **Perombakan Total Penganalisis Video**: Penganalisis Video telah diubah sepenuhnya! Sebelumnya, fitur ini hanya menyediakan deskripsi dasar untuk video online. Sekarang, fitur ini adalah paket pemrosesan video komprehensif yang dirancang untuk pengguna tunanetra:
+    *   **Perekaman Layar Lokal (`Control+V`)**: Anda sekarang dapat merekam video tanpa suara langsung dari layar Anda. AI akan menganalisis segmen yang direkam dan memberikan deskripsi yang sangat rinci tentang pemandangan, tata letak, dan tindakan.
+    *   **Pembuatan Deskripsi Audio (SRT)**: Add-on sekarang dapat menghasilkan skrip Deskripsi Audio yang sangat mendetail (dalam format SRT standar) untuk video, lengkap dengan waktu jeda cerdas untuk menambatkan deskripsi secara cerdas ke jeda alami di trek audio, dan OCR verbatim untuk teks apa pun yang ada di layar.
+    *   **Narasi Audio Tersinkron (MP3)**: Selain subtitel berbasis teks, add-on dapat mengubah Deskripsi Audio menjadi ucapan, mencampurnya secara otomatis dengan trek audio asli video, menerapkan Peredaman Audio, dan mengekspor hasil akhir yang tersinkron sebagai file MP3.
+    *   **Aksi File Video Cerdas**: Jika Anda memfokuskan pada file video lokal dan menekan pintasan video, add-on akan secara otomatis mendeteksinya dan memproses file tersebut secara langsung.
+    *   **Pelacakan Karakter Lanjutan**: AI sekarang melakukan ekstraksi karakter tahap pertama. Ini membangun kamus karakter global dan melacak karakter secara akurat segmen demi segmen tanpa membingungkan identitas.
+    *   **Konfigurasi Analisis Video**: Menambahkan pengaturan baru untuk mengontrol ukuran potongan SRT, subtitel karakter, dan penafian.
+    *   **Perutean Model Diperluas**: Anda sekarang dapat memilih model video khusus (`gemini_video_model`, `custom_video_model`) secara eksplisit di pengaturan Perutean Model Lanjutan.
+*   **Manajemen Kuota API Cerdas**: Penanganan kesalahan 429 (Batas Harian) yang ditingkatkan dengan melacak kuota per model. Jika sebuah kunci mencapai batas hariannya pada satu model, ia akan dikarantina secara cerdas hanya untuk model tersebut, membiarkan kunci tersebut tetap tersedia untuk digunakan dengan model lainnya.
+
+## Perubahan untuk 7.0.0
+
+*   **Melanjutkan Pemindaian yang Belum Selesai**: Menambahkan fitur lanjutkan untuk Pembaca Dokumen dan Tindakan File Cerdas. Jika pemindaian terputus, sekarang Anda dapat melanjutkan dari titik terakhir alih-alih memulai lagi dari awal.
+*   **Variabel `[screen_fg_obj]` Baru**: Menambahkan variabel prompt kustom untuk mengambil tangkapan layar hanya dari jendela aktif di latar depan, bukan seluruh layar.
+*   **Coba Ulang Cerdas & Rotasi Kunci**: Add-on kini diam-diam mencoba ulang hingga 5 kali pada kunci yang sama saat terjadi beban server sementara, seperti "permintaan tinggi" atau respons tidak valid. Jika percobaan ulang gagal, add-on otomatis beralih ke kunci API berikutnya dalam daftar Anda.
+*   **Deteksi Screen Curtain**: Menambahkan pemeriksaan untuk mencegah pengambilan tangkapan layar saat Screen Curtain aktif, baik aktif permanen maupun dinyalakan sementara dengan hotkey. Add-on akan memperingatkan Anda dan berhenti, sehingga Anda tidak mengirim gambar hitam dan membuang token API.
+*   **Penyempurnaan Pembaca Dokumen**: Dialog rentang PDF kini otomatis memilih bahasa target default dari pengaturan add-on. Penanganan thread juga ditingkatkan agar tugas latar belakang berhenti dengan bersih saat pembaca ditutup.
+*   **Integrasi OCR Mistral Bawaan**: Mengintegrasikan API Document OCR bawaan Mistral. Dokumen multi-halaman otomatis digabung, diunggah, dan diproses secara batch memakai endpoint khusus `/v1/ocr` milik Mistral, sedangkan gambar satu halaman diproses langsung tanpa konversi PDF yang tidak perlu [1].
+*   **Penangan URL Kustom Dinamis**: Mengubah URL API Kustom kini langsung menghapus cache daftar model dan mengembalikan kotak teks entri model manual. Ini memastikan kompatibilitas penuh dengan endpoint kustom, seperti Cloudflare AI Gateway, yang tidak mendukung endpoint daftar `/v1/models` standar.
+*   **Mesin Input Operator AI Dirombak**: Sistem simulasi mouse dan keyboard dasar untuk Operator AI ditulis ulang sepenuhnya. API lama `mouse_event` diganti dengan API Windows modern `SendInput`, sehingga kompatibilitas dengan aplikasi modern, jendela yang dilindungi UAC, dan tampilan high-DPI jauh lebih baik.
+*   **Operasi Seret & Lepas Diperbaiki**: Aksi seret dan lepas di Operator AI kini jauh lebih stabil dan andal. Mesin baru memakai kurva "easing" yang natural, posisi kursor presisi, timing yang dioptimalkan, dan teknik "nudge" cerdas agar Windows dan aplikasi mengenali serta menjalankan gestur seret-dan-lepas dengan benar tanpa gagal di tengah jalan.
+*   **Dukungan Multi-Monitor**: Operator AI kini mendukung penuh setup multi-monitor. Gerakan dan klik mouse bekerja benar di semua monitor memakai flag `MOUSEEVENTF_VIRTUALDESK`, sehingga posisi tetap akurat di monitor mana pun aplikasi target berada.
+*   **Simulasi Keyboard Ditingkatkan**: Injeksi tombol ditingkatkan agar mendukung penuh "Extended Keys", seperti tombol panah, Home, End, Page Up/Down, Insert, Delete, dan F1-F12. Ini memastikan navigasi dan perintah pintasan yang dikirim Operator AI berjalan lancar di semua aplikasi.
+*   **Dukungan Gambar HEIC/HEIF**: Menambahkan dukungan bawaan untuk format foto iPhone. Sekarang Anda dapat langsung memilih file `.heic` dan `.heif` untuk deskripsi AI, OCR, atau Pembacaan Dokumen tanpa konversi lebih dulu.
+
+## Perubahan untuk 6.5.0
+
+*   **Asisten Langsung**: Menambahkan fitur asisten suara dan layar secara real-time, tersedia secara eksklusif untuk penyedia Google Gemini (atau penyedia kustom yang kompatibel dengan Gemini). Termasuk kustomisasi suara interaktif dan kedalaman berpikir langsung di dalam dialog, dengan rekoneksi otomatis setelah mengubah pengaturan.
+*   **Penyedia AI MiniMax**: Mengintegrasikan MiniMax sebagai penyedia setara dengan dukungan multimodal penuh (obrolan, visi, OCR), TTS kustom menggunakan lebih dari 300+ suara dinamis, dan penghapusan blok penalaran secara otomatis (misalnya, `<think>...</think>`) dari keluaran.
+*   **Terjemahan Penampil Dokumen**: Memperbaiki kegagalan terjemahan diam-diam untuk pengguna NVDA non-Inggris dengan memastikan kode bahasa 2 huruf standar dikirim ke Google Translate alih-alih nama bahasa yang dilokalkan.
+*   **Coba Lagi Pemindaian Batch PDF**: Mengimplementasikan logika coba lagi yang sangat dioptimalkan, terpisah, dan diam-diam untuk pemindaian batch dokumen PDF guna mencegah pengunggahan berulang dan menghindari popup kesalahan yang mengganggu selama proses coba lagi.
+*   **Status Penampil Dokumen**: Memperbaiki bug di mana status keseluruhan plugin (diperiksa melalui `I`) tetap macet di "Pemrosesan Batch Dimulai" selama pemindaian dokumen yang panjang.
+*   **Perbaikan Crash Threading**: Memperbaiki crash pernyataan thread `IsMain() failed in wxTimerImpl` yang parah saat membuka dokumen dari thread latar belakang dengan memindahkan antrean callback GUI ke `wx.CallAfter`.
+
+## Perubahan untuk 6.1.2
+
+*   **Pemeriksaan Awal Label Duplikat**: Memperbaiki masalah pada pelabelan tunggal ketika pemeriksaan duplikat masih memakai kunci koordinat lama, sehingga NVDA membuat permintaan AI ganda untuk objek yang sudah diberi label alih-alih mengumumkan label yang ada.
+*   **Obrolan Dokumen untuk Penyedia Non-Gemini**: Memperbaiki pemeriksaan kunci API yang terlalu ketat di Obrolan Dokumen (`on_ask`) agar pengguna OpenAI, Groq, atau penyedia Kustom lokal seperti Ollama dapat mengobrol dengan dokumen tanpa diblokir.
+*   **Terjemahan OCR Chrome Cepat**: Mengembalikan API terjemahan gratis tanpa kunci untuk OCR Chrome. Terjemahan teks hasil ekstraksi kini melewati AI Gemini, sehingga kuota API lebih hemat dan proses terjemahan lebih cepat.
+*   **Filter Alfanumerik CAPTCHA**: Memperbaiki logika filter di pemecah CAPTCHA agar karakter non-alfanumerik dibersihkan dengan benar dalam semua situasi.
+*   **Pembaruan Bantuan Lapisan Perintah**: Memperbaiki pintasan pengumuman status di menu bantuan dari `L` menjadi `I`, dan menambahkan kedua perintah pelabelan (`L` dan `Shift+L`) ke daftar.
+
+## Perubahan untuk 6.1.1
+
+*   **Perbaikan Output Thinking Gemma 4**: Memperbaiki masalah pada model Gemma 4 ketika seluruh proses berpikir internal ditampilkan sebagai respons akhir, atau ketika menonaktifkan thinking menghasilkan respons kosong. Add-on kini memisahkan dan mengambil hanya teks akhir yang bersih.
+*   **OCR Batch dari File Explorer**: Anda kini dapat memilih beberapa foto atau PDF langsung di Windows File Explorer dan mengekstrak teks atau menganalisisnya secara batch. Add-on akan otomatis memfilter dan memproses hanya format file yang didukung.
+
 ## Perubahan untuk 6.1.0
 
 *   **Integrasi AI Lokal Universal (Siapkan AI Lokal)**: Menambahkan tombol **"Siapkan AI Lokal"** baru di Pengaturan Penyedia Kustom. Pengguna kini dapat mengonfigurasi mesin AI lokal seperti **Ollama**, **LM Studio**, **Jan.ai**, dan **KoboldCPP** secara otomatis dan instan.
@@ -140,11 +360,11 @@ Terima kasih sebesar-besarnya kepada anggota komunitas yang mendukung pengembang
 
 *   **Memperkenalkan Pelabelan AI Semantik**: Pengguna kini dapat memberi label permanen pada tombol dan ikon tanpa nama menggunakan AI. Tekan **L** untuk memberi label pada objek navigator saat ini (mendukung fokus Tab dan navigasi objek), atau **Shift+L** untuk memindai dan memberi label seluruh aplikasi sekaligus.
 *   **Pengelolaan Label Cerdas**: Menambahkan dialog Pengelola Label baru yang sepenuhnya aksesibel (melalui **Shift+L** jika label sudah ada) untuk melihat, mengganti nama, atau menghapus banyak label kustom sekaligus.
-*   **Analisis File Langsung (Tanpa Dialog File)**: Add-on kini dapat mendeteksi saat fokus berada pada file PDF atau gambar di Windows File Explorer. Menekan **F (Aksi File Cerdas)** atau **D (Pembaca Dokumen)** pada file yang disorot akan langsung memprosesnya, tanpa membuka dialog "Open" standar.
+*   **Analisis File Langsung (Tanpa Dialog File)**: Add-on kini dapat mendeteksi saat fokus berada pada file PDF atau gambar di Windows File Explorer. Menekan **F (Tindakan File Cerdas)** atau **D (Pembaca Dokumen)** pada file yang disorot akan langsung memprosesnya, tanpa membuka dialog "Buka" standar.
 
 ## Perubahan untuk 5.6
 
-*   **Menambahkan Mesin OCR "Tidak Ada (Ambil Lapisan Teks)"**: Pengguna kini dapat mengambil teks langsung dari PDF yang sudah memiliki lapisan teks tanpa memakai kredit AI. Ini membuat proses lebih cepat dan lebih privat untuk dokumen berbasis teks.
+*   **Menambahkan Mesin OCR "Tanpa OCR (Ekstrak Lapisan Teks)"**: Pengguna kini dapat mengambil teks langsung dari PDF yang sudah memiliki lapisan teks tanpa memakai kredit AI. Ini membuat proses lebih cepat dan lebih privat untuk dokumen berbasis teks.
 *   **Akurasi UI Explorer Ditingkatkan**: Prompt UI Explorer diperbaiki agar lebih tepat mengenali jenis elemen, seperti item daftar, dan melaporkan status seperti "(Dicentang)", "(Dipilih)", atau "(Diperluas)", sambil mengabaikan komponen sistem Windows seperti Taskbar dan Jam.
 *   **Pengingat Pengaturan Setelah Instalasi**: Menambahkan notifikasi setelah instalasi untuk mengarahkan pengguna ke menu pengaturan agar dapat mengonfigurasi kunci API dan preferensi.
 
@@ -161,7 +381,7 @@ Terima kasih sebesar-besarnya kepada anggota komunitas yang mendukung pengembang
     *   *Catatan performa:* Fitur ini dioptimalkan untuk **Gemini 3.0 Flash (Preview)** sehingga responsnya sangat cepat dan cerdas, bahkan untuk tata letak antarmuka yang rumit.
     *   **Peringatan penggunaan API:** Agar Operator AI bisa bekerja akurat, ia perlu "melihat" kondisi layar dan mengirim tangkapan layar resolusi tinggi pada setiap langkah. Penggunaan yang sering akan menghabiskan kuota API jauh lebih cepat daripada tugas berbasis teks biasa.
 *   **Visual UI Explorer (E):** Lelah menghadapi "tombol tanpa label"? Tekan **E** untuk mengaktifkan UI Explorer. AI akan memindai seluruh jendela dan membuat daftar semua elemen yang bisa diklik, termasuk ikon, grafik, dan menu. Pilih item dari daftar, lalu Operator AI akan mengkliknya untuk Anda. Anggap saja seperti lapisan aksesibilitas tambahan di atas aplikasi apa pun.
-*   **Aksi File Cerdas Berbasis Konteks (F):** Tombol **F** dirombak total. Fitur ini tidak lagi menganggap Anda selalu ingin OCR. Saat Anda memilih satu gambar, add-on akan menanyakan tujuan Anda: pilih **Deskripsi Visual Terperinci** untuk memahami isi gambar, atau **Ekstraksi Teks Terstruktur (OCR)** untuk membaca teks. Menu akan menyesuaikan secara dinamis berdasarkan jenis file dan mesin AI yang aktif.
+*   **Tindakan File Cerdas Berbasis Konteks (F):** Tombol **F** dirombak total. Fitur ini tidak lagi menganggap Anda selalu ingin OCR. Saat Anda memilih satu gambar, add-on akan menanyakan tujuan Anda: pilih **Deskripsi Visual Terperinci** untuk memahami isi gambar, atau **Ekstraksi Teks Terstruktur (OCR)** untuk membaca teks. Menu akan menyesuaikan secara dinamis berdasarkan jenis file dan mesin AI yang aktif.
 *   **Optimasi Inti:** Logika internal add-on dibersihkan secara menyeluruh dengan menghapus fungsi lama yang tidak dipakai dan kode yang berulang. Hasilnya adalah pengalaman yang lebih ringan, cepat, dan andal untuk semua pengguna.
 
 ## Perubahan untuk 5.0
@@ -175,7 +395,7 @@ Terima kasih sebesar-besarnya kepada anggota komunitas yang mendukung pengembang
 * **"Pindai ulang dengan AI" Universal**: Fitur pindai ulang di Pembaca Dokumen tidak lagi terbatas pada Gemini. Fitur ini memakai penyedia AI apa pun yang sedang aktif untuk memproses ulang halaman.
 
 ## Perubahan untuk 4.6
-* **Pembukaan Ulang Hasil Interaktif:** Menambahkan tombol **Space** pada Lapisan Perintah, sehingga pengguna bisa langsung membuka kembali respons AI terakhir di jendela obrolan untuk pertanyaan lanjutan, bahkan saat mode "Output Langsung" aktif.
+* **Pembukaan Ulang Hasil Interaktif:** Menambahkan tombol **Space** pada Lapisan Perintah, sehingga pengguna bisa langsung membuka kembali respons AI terakhir di jendela obrolan untuk pertanyaan lanjutan, bahkan saat mode "Keluaran Langsung" aktif.
 * **Pusat Komunitas Telegram:** Menambahkan tautan "Kanal Telegram Resmi" di menu Tools NVDA, agar pengguna lebih cepat mengikuti kabar, fitur, dan rilis terbaru.
 * **Stabilitas Respons Ditingkatkan:** Mengoptimalkan logika inti fitur Terjemahan, OCR, dan Visi agar performa lebih andal dan pengalaman output suara langsung lebih mulus.
 * **Panduan Antarmuka Ditingkatkan:** Deskripsi pengaturan dan dokumentasi diperbarui agar sistem pembukaan ulang hasil terakhir lebih mudah dipahami, termasuk cara kerjanya bersama pengaturan output langsung.
@@ -219,7 +439,7 @@ Terima kasih sebesar-besarnya kepada anggota komunitas yang mendukung pengembang
 *   **Analisis Video Online:** Menambahkan fitur baru untuk menganalisis video YouTube dan Instagram langsung dari URL.
 
 ## Perubahan untuk 3.1.0
-*   **Mode Output Langsung:** Menambahkan opsi untuk melewati dialog obrolan dan mendengar respons AI langsung melalui suara, agar lebih cepat dan mulus.
+*   **Mode Keluaran Langsung:** Menambahkan opsi untuk melewati dialog obrolan dan mendengar respons AI langsung melalui suara, agar lebih cepat dan mulus.
 *   **Integrasi Papan Klip:** Menambahkan pengaturan baru untuk menyalin respons AI ke papan klip secara otomatis.
 
 ## Perubahan untuk 3.0
@@ -229,6 +449,7 @@ Terima kasih sebesar-besarnya kepada anggota komunitas yang mendukung pengembang
 *   **Stabilitas Dikte:** Stabilitas Dikte Cerdas ditingkatkan secara signifikan. Klip audio yang lebih pendek dari 1 detik kini diabaikan untuk mencegah halusinasi AI dan error kosong.
 *   **Penanganan File:** Memperbaiki masalah yang membuat unggahan file dengan nama non-Inggris gagal.
 *   **Optimasi Prompt:** Memperbaiki logika terjemahan dan menyusun hasil fitur visi agar lebih terstruktur.
+
 ## Perubahan untuk 2.9
 
 *   **Menambahkan terjemahan Prancis dan Turki.**

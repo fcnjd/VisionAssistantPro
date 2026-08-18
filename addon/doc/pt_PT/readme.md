@@ -1,323 +1,578 @@
 # Documentação do Vision Assistant Pro
 
-O **Vision Assistant Pro** é um assistente de IA multimodal avançado para o NVDA. Utiliza motores de IA de classe mundial para fornecer leitura inteligente do ecrã, tradução, ditado por voz e análise de documentos.
+<!-- DOWNLOAD_COUNT_START --> Total Downloads: 61,000+ <!-- DOWNLOAD_COUNT_END -->
 
-_Este extra foi lançado para a comunidade em honra do Dia Internacional das Pessoas com Deficiência._
+O **Vision Assistant Pro** é um assistente de IA multimodal avançado para o NVDA. Utiliza motores de IA de classe mundial para oferecer leitura de ecrã inteligente, tradução, ditado por voz e análise de documentos.
 
-## 1. Configuração e Ajustes
+_Este extra foi disponibilizado à comunidade em homenagem ao Dia Internacional das Pessoas com Deficiência._
 
-Aceda a **Menu do NVDA > Preferências > Definições > Vision Assistant Pro**.
+## 1. Configuração e Instalação
 
-### 1.1 Definições de Ligação
+Aceda ao **Menu NVDA > Preferências > Definições > Vision Assistant Pro**. A janela de definições está organizada em 8 separadores acessíveis: **Ligação**, **Comportamento da IA**, **Idiomas de Tradução**, **Leitor de Documentos**, **Vídeo**, **CAPTCHA**, **Prompts** e **Avançado**.
 
-- **Fornecedor:** Selecione o seu serviço de IA preferido. Os fornecedores suportados incluem **Google Gemini**, **OpenAI**, **Mistral**, **Groq** e **Custom** (servidores compatíveis com OpenAI, como Ollama, LM Studio, Jan.ai ou KoboldCPP).
-- **Nota Importante:** Recomendamos fortemente a utilização do **Google Gemini** para melhor desempenho e precisão (especialmente para análise de imagens/ficheiros).
-- **Chave API:** Obrigatória. Pode introduzir várias chaves (separadas por vírgulas ou novas linhas) para rotação automática.
-- **Obter Modelos:** Após introduzir a sua chave API, prima este botão para descarregar a lista mais recente de modelos disponíveis do fornecedor.
+### 1.1 Separador Ligação
+
+- **Provedor:** Selecione o seu serviço de IA preferido. Os provedores suportados incluem **Google Gemini**, **OpenAI**, **Mistral**, **Groq**, **MiniMax** e **Personalizado** (servidores compatíveis com OpenAI como Ollama, LM Studio, Jan.ai ou KoboldCPP).
+- **Chave da API:** Introduza uma ou várias chaves de API (separadas por vírgulas ou quebras de linha) para rotação automática.
+- **Obter Modelos:** Prima este botão após introduzir a sua chave de API para transferir a lista de modelos mais recente disponível no provedor.
 - **Modelo de IA:** Selecione o modelo principal utilizado para conversação geral e análise.
+- **Definições de Provedor Personalizado:** Configure pontos de extremidade (endpoints) locais ou personalizados. Inclui **Configurar IA Local** (configuração com um clique para Ollama, LM Studio, Jan.ai ou KoboldCPP) e **Configuração Avançada de Endpoint**.
+- **Encaminhamento Avançado de Modelos (Específico por tarefa):** Opcionalmente, selecione modelos dedicados nos menus suspensos para tarefas de OCR, STT, TTS, Operador de IA, Vídeo e Assistente em Direto.
+- **Opções de Ligação e Saída:** Configure o URL de Proxy, verificação de atualizações ao iniciar, Limpar Markdown na Conversa, Copiar respostas da IA para a área de transferência, Saída Direta (Sem Janela de Conversa) e Saída Direta do Assistente em Direto.
 
-### 1.2 Encaminhamento Avançado de Modelos
+### 1.2 Separador Comportamento da IA
 
-_Disponível para todos os fornecedores, incluindo Gemini, OpenAI, Groq, Mistral e Custom._
+- **Criatividade (Temperatura):** Controla a aleatoriedade e criatividade da IA (de 0,0 a 2,0). Valores mais baixos produzem resultados de tradução e OCR mais determinísticos e precisos.
 
-> **⚠️ Aviso:** Estas definições destinam-se apenas a **utilizadores avançados**. Se não tiver a certeza do que faz um modelo específico, deixe esta opção **desmarcada**. Selecionar um modelo incompatível para uma tarefa (por exemplo, um modelo apenas de texto para Visão) irá causar erros e impedir o funcionamento do extra.
+### 1.3 Separador Idiomas de Tradução
 
-Assinale **"Encaminhamento Avançado de Modelos (Específico por Tarefa)"** para desbloquear controlo detalhado. Isto permite-lhe selecionar modelos específicos da lista suspensa para diferentes tarefas:
+- **Idioma de Origem:** Selecione o seu idioma de entrada predefinido.
+- **Idioma de Destino:** Selecione o seu idioma principal de tradução.
+- **Idioma de Resposta da IA:** Selecione o idioma para as respostas gerais da IA.
+- **Troca Inteligente:** Troca automaticamente os idiomas de origem e destino com base no texto detetado.
 
-- **Modelo OCR / Visão:** Escolha um modelo especializado para analisar imagens.
-- **Speech-to-Text (STT):** Escolha um modelo específico para ditado.
-- **Text-to-Speech (TTS):** Escolha um modelo para gerar áudio.
-- **Modelo Operador de IA:** Selecione um modelo específico para tarefas autónomas de operação do computador.
-  _Nota: Funcionalidades não suportadas (por exemplo, TTS para Groq) serão automaticamente ocultadas._
+### 1.4 Separador Leitor de Documentos
 
-### 1.3 Configuração Avançada de Endpoint (Fornecedor Custom)
+- **Motor de OCR:** Escolha entre **Chrome (Rápido)** para resultados rápidos ou **IA (Avançado)** para uma preservação superior da estrutura da página.
+- **Tamanho do Lote do OCR:** Especifique o número de páginas por pedido (defina como 0 para processamento num único pedido).
+- **Descrever Imagens Inline:** Ative ou desative descrições de imagens no próprio texto durante a extração de documentos.
+- **Exportar Números de Página:** Ative ou desative os números de página e separadores na saída de documentos com várias páginas.
+- **Voz TTS:** Selecione o estilo de voz predefinido para a geração de áudio.
 
-_Disponível apenas quando "Custom" estiver selecionado._
+### 1.5 Separador Vídeo
 
-> **⚠️ Aviso:** Esta secção permite configuração manual da API e foi concebida para **utilizadores avançados** que executam servidores locais ou proxies. URLs ou nomes de modelos incorretos irão quebrar a conectividade. Se não souber exatamente o que são estes endpoints, deixe esta opção **desmarcada**.
+- **Tamanho do Bloco de Vídeo:** Duração dos segmentos em minutos para a geração de Audiodescrição (defina como 0 para processar o ficheiro inteiro).
+- **Adicionar Lista de Personagens:** Opção para adicionar um dicionário de personagens como a primeira entrada das legendas.
+- **Adicionar Aviso de IA:** Opção para inserir um aviso de responsabilidade sobre IA no início das legendas SRT do vídeo.
 
-Assinale **"Configuração Avançada de Endpoint"** para introduzir manualmente os detalhes do servidor. Ao contrário dos fornecedores nativos, aqui deve **escrever** os URLs específicos e os Nomes dos Modelos:
+### 1.6 Separador CAPTCHA
 
-- **URL da Lista de Modelos:** O endpoint para obter modelos disponíveis.
-- **URL do Endpoint OCR/STT/TTS:** URLs completos para serviços específicos (por exemplo, `http://localhost:11434/v1/audio/speech`).
-- **Modelos Personalizados:** Introduza manualmente o nome do modelo (por exemplo, `llama3:8b`) para cada tarefa.
+- **Ativar Resolução Visual de CAPTCHA:** Ative ou desative a resolução automática de desafios visuais (hCaptcha, reCAPTCHA).
+- **Método de CAPTCHA de Texto:** Escolha entre capturar o **Objeto do Navegador** ou o **Ecrã Inteiro**.
 
-### 1.3.1 Configurar IA Local (Configuração numa Só Ação)
+### 1.7 Separador Prompts
 
-Para tornar a integração de IA local e completamente offline extremamente simples, está disponível um botão dedicado **"Configurar IA Local"** dentro das Definições do Fornecedor Custom.
+- **Gerir Prompts:** Abre uma janela dedicada para personalizar as prompts predefinidas do sistema ou criar, editar, reordenar e pré-visualizar prompts personalizadas do utilizador com variáveis dinâmicas (ex.: `[selection]`, `[screen_fg_obj]`).
 
-Se estiver a executar um servidor local de modelos de IA no seu computador:
+### 1.8 Separador Avançado e Registo Global
 
-1. Selecione **Custom** como o seu Fornecedor.
-2. Prima o botão **Configurar IA Local**.
-3. Escolha o seu motor local de IA na caixa de diálogo acessível:
-   - **Ollama** (por defeito em `http://127.0.0.1:11434`)
-   - **LM Studio** (por defeito em `http://127.0.0.1:1234`)
-   - **Jan.ai** (por defeito em `http://127.0.0.1:1337`)
-   - **KoboldCPP** (por defeito em `http://127.0.0.1:5001`)
-4. O extra irá configurar instantaneamente o URL local correto, o tipo de API e obter automaticamente os seus modelos offline ativos para preencher a caixa de seleção **Modelo de IA**.
+Aceda ao separador **Avançado** para configurar o registo de eventos (logging) global do extra:
 
-_Nota sobre Rede e Proxies:_ Este motor de ligação local possui um mecanismo avançado de bypass de proxy. Mesmo que esteja a utilizar uma VPN ativa ou proxy em modo TUN, os seus pedidos locais de IA irão ignorá-los completamente, garantindo ligações offline estáveis sem erros 502 Bad Gateway.
-
-### 1.4 Preferências Gerais
-
-- **Motor OCR:** Escolha entre **Chrome (Rápido)** para resultados rápidos ou **IA (Avançado)** para preservação superior do esquema.
-  - _Nota:_ Se selecionar "IA (Avançado)" mas o seu fornecedor estiver definido como OpenAI/Groq, o extra irá encaminhar inteligentemente a imagem para o modelo de visão do fornecedor ativo.
-- **Voz TTS:** Selecione o seu estilo de voz preferido. Esta lista é atualizada dinamicamente com base no seu fornecedor ativo.
-- **Criatividade (Temperatura):** Controla a aleatoriedade da IA. Valores mais baixos são melhores para tradução/OCR precisos.
-- **URL do Proxy:** Configure esta opção caso os serviços de IA estejam restringidos na sua região (suporta proxies locais como `127.0.0.1` ou URLs bridge).
+- **Ativar ficheiro de registo dedicado:** Ative ou desative o registo de todos os eventos operacionais, tráfego da API e erros de todos os módulos do extra num ficheiro separado (`vision_assistant.log`).
+- **Nível de Registo:** Selecione o nível de detalhe entre **Depuração (Todos os Detalhes)**, **Informação (Informação Geral)**, **Aviso (Apenas Avisos)** e **Erro (Apenas Erros)**.
+- **Manter Registos Durante:** Defina períodos de retenção automática para eliminar registos mais antigos (de 1 hora a 90 dias).
+- **Controlos de Gestão de Registos:** Utilize **Abrir Ficheiro de Registo**, **Abrir Pasta de Registos** ou **Limpar Ficheiro de Registo** para inspecionar ou apagar dados de registo diretamente sem reiniciar o NVDA ou interferir com os registos padrão do NVDA.
 
 ## 2. Camada de Comandos e Atalhos
 
 Para evitar conflitos de teclado, este extra utiliza uma **Camada de Comandos**.
 
-1. Prima **NVDA + Shift + V** (Tecla Mestre) para ativar a camada (irá ouvir um sinal sonoro).
-2. Solte as teclas e prima uma das seguintes teclas individuais:
+1. Prima **NVDA + Shift + V** (Tecla Mestra) para ativar a camada (ouvirá um sinal sonoro).
+2. Largue as teclas e, em seguida, prima uma das seguintes teclas individuais:
 
-| Tecla         | Função                            | Descrição                                                                                                                             |
-| ------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| **Shift + A** | **Operador de IA**                | **Operação Autónoma:** Diga à IA para executar uma tarefa no seu ecrã. Premir novamente interrompe instantaneamente operações ativas. |
-| **E**         | **Explorador de UI**              | **Clique Interativo:** Identifica e clica em elementos da interface em qualquer aplicação.                                            |
-| **T**         | Tradutor Inteligente              | Traduz o texto sob o cursor de navegação ou seleção.                                                                                  |
-| **Shift + T** | Tradutor da Área de Transferência | Traduz o conteúdo atualmente na área de transferência.                                                                                |
-| **R**         | Refinador de Texto                | Resume, Corrige Gramática, Explica ou executa **Prompts Personalizados**.                                                             |
-| **V**         | Visão de Objeto                   | Descreve o objeto atual do navegador.                                                                                                 |
-| **O**         | Visão de Ecrã Completo            | Analisa todo o esquema e conteúdo do ecrã.                                                                                            |
-| **Shift + V** | Análise de Vídeo Online           | Analisa vídeos do **YouTube**, **Instagram**, **TikTok** ou **Twitter (X)**.                                                          |
-| **D**         | Leitor de Documentos              | Leitor avançado para PDFs e imagens com seleção de intervalo de páginas.                                                              |
-| **F**         | **Ação Inteligente de Ficheiro**  | Reconhecimento sensível ao contexto de imagens, PDFs ou ficheiros TIFF selecionados.                                                  |
-| **A**         | Transcrição de Áudio              | Transcreve ficheiros MP3, WAV ou OGG em texto.                                                                                        |
-| **C**         | Solucionador de CAPTCHA           | Captura e resolve CAPTCHAs (suporta portais governamentais).                                                                          |
-| **S**         | Ditado Inteligente                | Converte fala em texto. Prima para iniciar a gravação e novamente para parar/escrever.                                                |
-| **I**         | Relatório de Estado               | Anuncia o progresso atual (por exemplo, "A analisar...", "Inativo").                                                                  |
-| **L**         | **Etiquetar Objeto**              | **Etiquetagem Semântica por IA:** Etiqueta permanentemente o elemento/ícone atualmente focado.                                        |
-| **Shift + L** | **Gerir/Analisar Etiquetas**      | Abre o Gestor de Etiquetas (se existirem etiquetas) ou analisa a aplicação em busca de elementos sem nome.                            |
-| **U**         | Verificar Atualizações            | Verifica manualmente no GitHub a versão mais recente do extra.                                                                        |
-| **Espaço**    | Recuperar Último Resultado        | Mostra a última resposta da IA numa caixa de diálogo de conversação para revisão ou continuação.                                      |
-| **H**         | Ajuda de Comandos                 | Mostra uma lista de todos os atalhos disponíveis.                                                                                     |
+| Tecla                  | Função                                 | Descrição                                                                                                                        |
+| ---------------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **Shift + A**          | **Operador de IA**                     | **Operação Autónoma:** Peça à IA para realizar uma tarefa no ecrã. Premir novamente aborta instantaneamente as operações ativas. |
+| **E**                  | **Explorador de UI**                   | **Clique Interativo:** Identifica e clica em elementos da interface em qualquer aplicação.                                       |
+| **T**                  | Tradutor Inteligente                   | Traduz o texto sob o cursor de navegação ou seleção.                                                                             |
+| **Shift + T**          | Tradutor da Área de Transferência      | Traduz o conteúdo atualmente na área de transferência.                                                                           |
+| **R**                  | Refinador de Texto                     | Resumir, Corrigir Gramática, Explicar ou executar **Prompts Personalizadas**.                                                    |
+| **V**                  | Visão do Objeto                        | Descreve o objeto de navegação atual.                                                                                            |
+| **O**                  | Visão de Ecrã Inteiro                  | Analisa a disposição e o conteúdo de todo o ecrã.                                                                                |
+| **Shift + V**          | Análise de Vídeo                       | Analisa ficheiros de vídeo locais ou vídeos online do **YouTube**, **Instagram**, **TikTok** ou **Twitter (X)**.                 |
+| **Control + V**        | Gravação de Vídeo Local                | Grava um vídeo silencioso do seu ecrã e analisa as ações e a disposição.                                                         |
+| **D**                  | Leitor de Documentos                   | Leitor avançado para PDF e imagens com seleção de intervalo de páginas.                                                          |
+| **F**                  | **Ação de Ficheiro Inteligente**       | Reconhecimento sensível ao contexto de ficheiros de imagem, PDF ou TIFF selecionados.                                            |
+| **M**                  | Transcrição e Dobragem de Multimédia   | Transcreve ou dobra ficheiros de áudio/vídeo (MP3, WAV, MP4, etc.) para o seu idioma de destino.                                 |
+| **C**                  | Resolutor de CAPTCHA                   | Captura e resolve CAPTCHAs.                                                                                                      |
+| **Shift + C**          | Conversa Direta                        | Abre uma interface de conversa por texto direta com a IA.                                                                        |
+| **S**                  | Ditado Inteligente                     | Converte voz em texto. Prima para iniciar a gravação e novamente para parar/escrever.                                            |
+| **Control+T**          | Tradução por Voz                       | Transcreve, traduz e escreve o resultado com base nas suas definições de idioma.                                                 |
+| **Control+L**          | **Assistente em Direto**               | **Copiloto em Tempo Real (Apenas Gemini):** Inicia ou termina uma conversa de voz e ecrã em direto com o assistente de IA.       |
+| **I**                  | Relatório de Estado                    | Anuncia o progresso atual (ex.: "A analisar...", "Inativo").                                                                     |
+| **L**                  | **Etiquetar Objeto**                   | **Etiquetagem Semântica por IA:** Etiqueta permanentemente o elemento/ícone focado.                                              |
+| **Shift + L**          | **Gerir/Verificar Etiquetas**          | Abre o Gestor de Etiquetas (se existirem) ou analisa a aplicação em busca de elementos sem nome.                                 |
+| **U**                  | Verificar Atualizações                 | Verifica manualmente no GitHub a existência da versão mais recente do extra.                                                     |
+| **Espaço**             | Recordar Último Resultado              | Mostra a última resposta da IA numa janela de conversa para revisão ou seguimento.                                               |
+| **H**                  | Ajuda de Comandos                      | Exibe uma lista de todos os atalhos disponíveis.                                                                                 |
+| **Alt + S**            | Definições                             | Abre a janela de definições do Vision Assistant Pro.                                                                             |
+| **Alt + Q**            | Relatório de Chaves com Quota Esgotada | Informa o número de chaves de API do Gemini que excederam a quota diária e a respetiva hora de reinício.                         |
+| **Alt + M**            | Auditoria de Encaminhamento            | Informa os modelos de IA atualmente selecionados no encaminhamento avançado.                                                     |
+| **Cima / Baixo**       | Navegação nas Definições Rápidas       | Navega entre as categorias de definições rápidas (Provedor, Modelo, etc.) na camada.                                             |
+| **Esquerda / Direita** | Alterar Definição Rápida               | Altera o valor da definição rápida atualmente selecionada.                                                                       |
 
-### 2.1 Atalhos do Leitor de Documentos (Dentro do Visualizador)
+## 3. Operador de IA - Controlo Autónomo do Computador
 
-- **Ctrl + PageDown:** Mover para a página seguinte.
-- **Ctrl + PageUp:** Mover para a página anterior.
-- **Alt + A:** Abrir uma caixa de diálogo de conversação para fazer perguntas sobre o documento.
-- **Alt + R:** Forçar uma **Nova Análise com IA** utilizando o fornecedor ativo.
-- **Alt + G:** Gerar e guardar um ficheiro de áudio de alta qualidade (WAV/MP3). _Oculto se o fornecedor não suportar TTS._
-- **Alt + S / Ctrl + S:** Guardar o texto extraído como ficheiro TXT ou HTML.
+O **Operador de IA** transforma o Vision Assistant Pro num assistente ativo capaz de interagir com o seu computador em seu nome, deixando de ser um mero leitor passivo. Pode pedir-lhe para descrever o ecrã, responder a perguntas sobre o que vê ou até assumir o controlo — clicando em botões, arrastando itens, escrevendo texto e navegando pelas aplicações utilizando comandos em linguagem natural.
 
-## 3. Prompts Personalizados e Variáveis
+A maior vantagem? Funciona perfeitamente em software completamente inacessível. Se estiver preso numa aplicação personalizada, num ambiente de trabalho remoto ou num site onde o seu leitor de ecrã fica totalmente em silêncio, o operador não se importa. Como "vê" o ecrã visualmente, consegue encontrar, ler e interagir com elementos que não têm qualquer etiqueta de acessibilidade.
 
-Pode gerir prompts em **Definições > Prompts > Gerir Prompts...**.
+### Como Funciona
+
+1. Prima **NVDA + Shift + V** e, em seguida, prima **Shift + A** (ou utilize o atalho direto) para abrir a janela do Operador de IA.
+2. Escreva o que pretende fazer em linguagem simples (ex.: "Clicar no botão Guardar", "O que diz a mensagem de erro?" ou "Mudar o nome do ficheiro para final.pdf").
+3. A IA irá analisar o seu ecrã, identificar os elementos relevantes e executar a ação ou fornecer a resposta. Se uma tarefa exigir vários passos, o operador continuará a trabalhar até estar concluída.
+4. Prima **Shift + A** novamente a qualquer momento para abortar instantaneamente uma operação em curso.
+
+### Ações Suportadas
+
+O operador compreende uma grande variedade de comandos:
+
+- **Descrever e Responder**: "Descreve a disposição do ecrã" ou "O que diz a mensagem de erro?"
+- **Clicar**: "Clica no botão Guardar"
+- **Clique Direito**: "Clica com o botão direito no ficheiro"
+- **Duplo Clique**: "Dá duplo clique no documento"
+- **Arrastar e Largar**: "Arrastar o documento para a pasta Arquivo"
+- **Escrever**: "Escreve 'Olá Mundo' na caixa de pesquisa"
+- **Rolar (Scroll)**: "Rolar para baixo três vezes"
+- **Premir Tecla**: "Prima Enter", "Prima Tab", "Prima Escape"
+- **Tarefas de Vários Passos**: "Abre o Explorador de Ficheiros, encontra o relatório e muda o nome para final.pdf"
+
+### Notas Importantes
+
+- **⚠️ Aviso de Utilização da API**: Como o operador precisa de "ver" exatamente o que está a acontecer no ecrã, envia uma captura de ecrã em alta resolução a cada passo. A utilização frequente consumirá a sua quota de API muito mais rapidamente do que as funcionalidades de texto padrão.
+- **Aplicações de Administrador**: Se o NVDA não estiver a ser executado com privilégios de Administrador, o operador poderá não conseguir interagir com janelas que exijam permissões elevadas. Esta é uma limitação de segurança do Windows e não um erro do extra.
+- **Boas Práticas**: Para obter os melhores resultados, dê comandos claros e específicos. "Clica no botão azul Submeter no fundo do formulário" funcionará quase sempre melhor do que apenas "Clica no botão".
+
+## 4. Análise de Vídeo e Audiodescrição
+
+> **Nota:** As funcionalidades de Análise de Vídeo e Audiodescrição são executadas exclusivamente pelo provedor **Google Gemini**. Certifique-se de que o seu provedor ativo nas definições do extra está definido como Google Gemini.
+
+O Vision Assistant Pro introduz capacidades potentes de processamento de vídeo concebidas especificamente para utilizadores cegos. Pode analisar tanto vídeos online como gravações de ecrã locais para fornecer descrições visuais altamente detalhadas e gerar guiões profissionais de Audiodescrição (SRT).
+
+### 4.1 Gravação de Ecrã Local (Control + V)
+
+Se encontrar um vídeo silencioso, uma animação ou um tutorial no seu ecrã, pode capturá-lo diretamente:
+
+1. Prima **NVDA + Shift + V** para entrar na Camada de Comandos e, em seguida, prima **Control + V**.
+2. O extra irá gravar silenciosamente o seu ecrã em segundo plano.
+3. Prima **Control + V** novamente para parar a gravação.
+4. A IA irá depois analisar o segmento de vídeo gravado e fornecer uma descrição altamente detalhada da cena, das personagens e das ações.
+
+### 4.2 Análise de Vídeo (Shift + V)
+
+Pode analisar tanto ficheiros de vídeo locais como vídeos online. Basta selecionar um ficheiro de vídeo local no Explorador do Windows ou copiar uma ligação de vídeo online para a sua área de transferência. Também pode premir **Shift + V** em qualquer lugar (como dentro de um reprodutor multimédia) para abrir uma janela onde pode procurar um ficheiro de vídeo ou colar um URL manualmente.
+
+- **Plataformas Online Suportadas:** YouTube, Instagram, TikTok e Twitter (X).
+- A IA detetará automaticamente o ficheiro local ou o URL, processará o vídeo e fornecerá uma descrição visual abrangente e um resumo em áudio.
+
+### 4.3 Geração de Audiodescrição (SRT)
+
+Para uma experiência mais estruturada, o extra pode gerar guiões profissionais de Audiodescrição no formato padrão SubRip (SRT).
+
+- **Sincronização Inteligente por Pausas:** A IA escuta a faixa de áudio e ancora especificamente as suas descrições visuais em pausas naturais e intervalos silenciosos, de modo a minimizar inteligentemente a sobreposição com os diálogos.
+- **Rastreio de Personagens:** O motor realiza uma análise prévia para extrair personagens distintas com base em características faciais imutáveis. Constrói um dicionário global para rastrear e etiquetar com precisão as personagens ao longo das diferentes cenas, sem confusões.
+- **OCR de Texto Literal:** Qualquer texto que apareça no ecrã (sinais, telemóveis, créditos) é rigorosamente citado de forma literal.
+- **Como Utilizar:** Para ouvir a legenda gerada, basta colocar o ficheiro `.srt` na mesma pasta do seu ficheiro de vídeo e dar-lhe exatamente o mesmo nome. Depois, configure o seu reprodutor multimédia (ex.: VLC ou PotPlayer) para encaminhar o texto das legendas diretamente para o seu leitor de ecrã ou motor TTS durante a reprodução.
+
+### 4.4 Narração de Áudio Sincronizada (Exportação MP3)
+
+Para além de criar ficheiros SRT em texto, o extra funciona como uma ferramenta completa de produção de Audiodescrição, sintetizando as descrições em voz e misturando-as com o vídeo. Pode agora escolher o **Gemini Live TTS** como motor de voz, o qual utiliza a API do Gemini Live para gerar narrações de voz altamente realistas e ilimitadas. Ao gerar um MP3 para ficheiros de vídeo locais, dispõe de vários modos de mistura:
+
+- **AD Padrão (Misturar Voz):** A narração é sobreposta diretamente sobre o áudio do vídeo. Ser-lhe-á perguntado se pretende aplicar **Atenuação de Áudio (Ducking)** (reduzir o volume de fundo durante as descrições) para garantir que a narração seja percetível.
+- **AD Extendida (Pausar Áudio):** O motor pausa o áudio original do vídeo durante as descrições, garantindo que nunca perde uma única palavra do diálogo original ou da narração da IA.
+- **Vídeos do YouTube:** Para fontes do YouTube (que não são transferidas localmente), a exportação MP3 conterá estritamente a faixa de voz de IA sincronizada, sem o áudio de fundo do vídeo.
+
+## 5. Transcrição e Dobragem de Multimédia (M)
+
+O Transcritor de Áudio foi completamente reconstruído para suportar ficheiros de áudio e vídeo (MP3, WAV, MP4, MKV, etc.). Prima **M** na Camada de Comandos para selecionar um ficheiro multimédia e escolha um dos 3 modos de operação distintos:
+
+1. **Transcrever (Idioma Original)**: Transcreve com precisão a fala no seu idioma original.
+2. **Transcrever e Traduzir (Idioma de Destino)**: Transcreve a fala e traduz-a para o seu idioma de destino configurado.
+3. **Dobrar e Traduzir (Idioma de Destino)** _(Apenas Gemini)_: Uma nova funcionalidade potente que transcreve a fala, traduz-a para o seu idioma de destino e sintetiza uma dobragem em áudio falado utilizando o motor TTS do extra.
+
+## 6. Leitor Avançado de Documentos e Imagens
+
+O Vision Assistant Pro inclui um Leitor de Documentos altamente otimizado, concebido para PDFs com várias páginas, imagens complexas e até formatos HEIC do iPhone.
+
+### 6.1 Processamento em Lote e Retoma
+
+Não precisa de ler um documento enorme de uma só vez. Introduza um intervalo de páginas (ex.: `1-20`) e a IA processará todas as páginas em segundo plano. Se o NVDA falhar ou se interromper a análise, o extra lembrar-se-á do seu progresso e oferecerá a opção de **Retomar** exatamente onde parou!
+
+### 6.2 Ação de Ficheiro Inteligente
+
+Nem sempre precisa de abrir o documento primeiro. No Explorador de Ficheiros do Windows, basta selecionar um PDF ou imagem e premir **D** (Leitor de Documentos) ou **F** (Ação de Ficheiro Inteligente) dentro da Camada de Comandos. O extra ignorará instantaneamente a janela de seleção de ficheiros e começará a processar o ficheiro selecionado.
+
+### 6.3 Atalhos do Visualizador de Documentos
+
+Quando a janela do Leitor de Documentos estiver aberta, pode utilizar os seguintes atalhos:
+
+- **Ctrl + PageDown:** Avançar para a página seguinte.
+- **Ctrl + PageUp:** Recuar para a página anterior.
+- **Alt + A:** Abrir uma janela de conversa para fazer perguntas sobre o documento.
+- **Alt + R:** Forçar uma **Nova Análise com IA** utilizando o seu provedor ativo.
+- **Alt + G:** Gerar e guardar um ficheiro de áudio de alta qualidade (WAV/MP3). _(Oculto se o provedor não suportar TTS)._
+- **Alt + S / Ctrl + S:** Guardar o texto extraído como um ficheiro TXT ou HTML.
+
+## 7. Etiquetagem Semântica por IA e Explorador de UI
+
+Preso numa aplicação cheia de "botão sem etiqueta" por todo o lado? O motor de Etiquetagem Semântica por IA resolve isto definitivamente.
+
+### 7.1 Etiquetagem Permanente de Objetos (L)
+
+Foque o seu leitor de ecrã num gráfico ou botão sem etiqueta e prima **L** na Camada de Comandos. A IA analisará o botão visualmente, determinará a sua função e aplicará uma etiqueta permanente.
+_Ao contrário das ferramentas de etiquetagem mais antigas dos leitores de ecrã, este extra utiliza um sistema híbrido avançado de "Assinatura de Objeto" (AutomationId/ControlID). As suas etiquetas personalizadas resistirão ao redimensionamento de janelas, à alteração de monitores e às atualizações das aplicações!_
+
+### 7.2 Análise Completa da Aplicação (Shift + L)
+
+Prima **Shift + L** para analisar toda a janela ativa de uma só vez. A IA encontrará todos os elementos sem etiqueta e nomeá-los-á inteligentemente de uma só assentada. Mais tarde, poderá gerir, renomear ou eliminar em lote estas etiquetas no Gestor de Etiquetas integrado.
+
+### 7.3 Explorador de UI (E)
+
+Precisa de interagir com um elemento sem navegar até ele manualmente? Prima **E** para ativar o Explorador de UI. A IA analisará o ecrã e gerará uma lista acessível de todos os elementos clicáveis (ignorando ruídos do sistema como as barras de tarefas). Escolha um item da lista e o extra clicará nele instantaneamente por si.
+
+## 8. Assistente de Voz em Direto
+
+O Assistente em Direto transforma o Vision Assistant Pro num copiloto interativo em tempo real.
+_(Nota: Esta funcionalidade é exclusiva do Google Gemini e de provedores Personalizados compatíveis com o Gemini)._
+
+- **Ativação:** Prima **Control + L** na Camada de Comandos para abrir a janela do Assistente em Direto.
+- **Interação em Tempo Real:** Fale naturalmente através do seu microfone. A IA escutará a sua voz e analisará o seu ecrã ativo em simultâneo. Pode fazer perguntas como "O que estou a ver?" ou "Lê o terceiro parágrafo para mim."
+- **Personalização:** Dentro da janela, pode alterar o Estilo de Voz da IA (ex.: Profissional, Amigável, Animado) e ajustar a sua "Profundidade do Pensamento" para controlar o nível de raciocínio antes de responder.
+
+## 9. Prompts Personalizadas e Variáveis
+
+Pode gerir as prompts em **Definições > Prompts > Gerir Prompts...**.
 
 ### Variáveis Suportadas
 
 - `[selection]`: Texto atualmente selecionado.
 - `[clipboard]`: Conteúdo da área de transferência.
-- `[screen_obj]`: Captura de ecrã do objeto do navegador.
-- `[screen_full]`: Captura de ecrã completa.
+- `[clipboard_image]`: Imagem atualmente na área de transferência.
+- `[screen_obj]`: Captura de ecrã do objeto de navegação.
+- `[screen_fg_obj]`: Captura de ecrã da janela ativa em primeiro plano.
+- `[screen_full]`: Captura do ecrã inteiro.
 - `[file_ocr]`: Selecionar ficheiro de imagem/PDF para extração de texto.
 - `[file_read]`: Selecionar documento para leitura (TXT, Código, PDF).
 - `[file_audio]`: Selecionar ficheiro de áudio para análise (MP3, WAV, OGG).
+- `{target_lang}`: Idioma de destino atual.
+- `{source_lang}`: Idioma de origem atual.
+- `{response_lang}`: Idioma atual de resposta da IA.
+- `{swap_target}`: Idioma alternativo para a tradução com troca inteligente.
+- `{swap_instruction}`: Bloco de instruções de tradução com troca inteligente.
 
----
+## 10. Casos de Uso Reais (Qual funcionalidade devo utilizar?)
 
-**Nota:** É necessária uma ligação ativa à internet para todas as funcionalidades de IA. Documentos com múltiplas páginas são processados automaticamente.
+O Vision Assistant Pro está repleto de ferramentas avançadas. Eis alguns cenários comuns para o ajudar a escolher a opção certa:
 
-## 4. Suporte e Comunidade
+- **Scenario: You want to understand the complete layout of a complicated window or inaccessible app.**
+  _Solution:_ Press **O** (Full Screen Vision). The AI will analyze the entire screen and describe exactly where elements, texts, and buttons are positioned.
+
+- **Scenario: You found an image on a webpage or an unlabeled graphic in a document.**
+  _Solution:_ Move your navigator object to the graphic and press **V** (Object Vision). The AI will describe specifically what that image contains.
+
+- **Scenario: You want to watch a movie or video clip with audio descriptions.**
+  _Solution:_ Press **Shift + V** on your video and choose **"Generate Audio Description (SRT File)"**. When it finishes, click **"Generate Synced Narration (MP3)"** and select **"Extended AD"**. The add-on will create an audio track that intelligently pauses the movie's dialogue to describe the visual scenes.
+
+- **Scenario: You encountered an app full of "unlabeled buttons".**
+  _Solution:_ Press **L** to permanently label the specific button using AI. Or, press **Shift + L** to scan and label the entire window at once. If you just want to click something quickly, press **E** (UI Explorer) to get a list of all clickable items.
+
+- **Scenario: You need to bypass an inaccessible CAPTCHA.**
+  _Solution:_ Press **C** (CAPTCHA Solver). The AI will automatically capture the CAPTCHA, solve it, and inject the answer into the correct field.
+
+- **Scenario: You want to read a long, 50-page PDF document.**
+  _Solution:_ Press **D** (Document Reader), set your provider to Google Gemini, and enter the page range `1-50`. The add-on will extract the text accurately in the background.
+
+- **Scenario: You are watching a silent video tutorial or animation on your screen.**
+  _Solution:_ Press **Control + V** to start recording the screen. Let the tutorial play, then press **Control + V** again. The AI will explain exactly what was demonstrated.
+
+- **Scenario: You encounter an unexpected error, API connection failure, or want to diagnose issues with custom local servers.**
+  _Solution:_ Go to **Settings > Advanced**, check **"Enable dedicated log file"**, and set the **Log Level** to **"Debug"**. Perform the action again, then click **"Open Log File"** to inspect technical details or attach `vision_assistant.log` to a support ticket.
+
+***
+**Nota:** É necessária uma ligação ativa à Internet para todas as funcionalidades de IA. Os documentos de várias páginas são processados automaticamente.
+
+## 11. Suporte e Comunidade
 
 Mantenha-se atualizado com as últimas notícias, funcionalidades e lançamentos:
 
-- **Canal Telegram:** [t.me/VisionAssistantPro](https://t.me/VisionAssistantPro)
-- **Issues do GitHub:** Para relatórios de erros e pedidos de funcionalidades.
+- **Canal do Telegram:** [t.me/VisionAssistantPro](https://t.me/VisionAssistantPro)
+- **GitHub Issues:** Para relatórios de erros e pedidos de novas funcionalidades.
 
-## 5. Apoiantes do Projeto
+### Relatar Erros e Registos
 
-Um sincero agradecimento aos membros da nossa comunidade que apoiam o desenvolvimento contínuo e a manutenção deste projeto através das suas generosas contribuições financeiras:
+Ao abrir um pedido de assistência (issue) no GitHub ou ao solicitar suporte, inclua detalhes sobre o seu provedor de IA ativo, modelo e versão do NVDA. Se estiver a ter problemas de ligação ou fechos inesperados, ative o ficheiro de registo dedicado em **Definições > Avançado**, recrie o problema e anexe o seu ficheiro `vision_assistant.log` para nos ajudar a resolver o problema mais rapidamente.
+
+## 12. Apoiantes do Projeto
+
+Um agradecimento do fundo do coração aos membros da nossa comunidade que apoiam o desenvolvimento contínuo e a manutenção deste projeto através das suas generosas contribuições financeiras:
 
 - **@Alyabani94**
 - **Ali Alamri**
 - **Ilya**
+- **Apoiante Anónimo** (`UQDd...CnMY`)
+- **leonardo0216**
+- **Sergei Fleytin**
+- **Suman Gayen**
 
-_Se desejar apoiar financeiramente o projeto e ver o seu nome aqui, pode encontrar a opção **Donate** no menu Ferramentas do NVDA (submenu Vision Assistant) ou durante o processo de configuração após a instalação._
+_Se desejar apoiar o projeto financeiramente e ver o seu nome aqui, pode encontrar a opção **Doar** no menu Ferramentas do NVDA (sub-menu Vision Assistant) ou durante o processo de configuração após a instalação._
 
----
+***
 
-## Alterações da versão 6.1.0
+## Alterações para 2026.08.06
 
-- **Integração Universal de IA Local (Configurar IA Local):** Adicionado um novo botão **"Configurar IA Local"** nas Definições do Fornecedor Custom. Os utilizadores podem agora configurar automaticamente motores locais de IA, incluindo **Ollama**, **LM Studio**, **Jan.ai** e **KoboldCPP**, instantaneamente.
-- **Bypass Inteligente de Proxy Local:** Reconstruída a lógica de ligação com um mecanismo avançado de bypass de proxy. O extra é agora suficientemente inteligente para ignorar completamente os proxies do sistema Windows em ligações locais loopback, garantindo ligações estáveis à IA local mesmo quando a VPN/TUN-mode está ativa.
-- **Etiquetagem de IA Ultraestável (v2):** Substituídas as chaves absolutas de coordenadas do ecrã por um avançado sistema híbrido de **Assinatura de Objeto**. As etiquetas dependem agora de identificadores programáticos (UIA **AutomationId** ou Win32 **ControlID**) e coordenadas relativas à janela, tornando as suas etiquetas personalizadas completamente resistentes ao redimensionamento de janelas, movimentação, troca de monitor ou escala.
-- **Migração Automática e Transparente de Etiquetas:** A atualização é completamente transparente. O extra irá migrar automaticamente as suas antigas etiquetas baseadas em coordenadas para o novo formato estável em segundo plano no primeiro foco, sem qualquer perda de dados.
+- **Etiquetagem no Explorador de UI**: Agora pode adicionar etiquetas diretamente aos elementos encontrados dentro do Explorador de UI! Foi adicionado um novo botão "Adicionar Etiqueta" e a interface permanece aberta de forma inteligente mantendo o foco, para que possa etiquetar rapidamente vários objetos sem interrupções.
+- **Melhoria na Camada de Definições Rápidas**: A camada do Vision Assistant (`Insert+Shift+V`) é agora persistente e altamente interativa! Pode utilizar as setas `Cima/Baixo` para navegar entre as definições rápidas (Provedor, Modelo, Idioma de Resposta da IA, Modelo TTS) e as setas `Esquerda/Direita` para alterar instantaneamente os seus valores com um feedback de voz inteligente e conciso. As suas seleções entram em vigor imediatamente (incluindo a ativação automática do encaminhamento avançado, quando necessário) e a camada permanece ativa enquanto configura.
+- **Conversa Direta (`Shift+C`)**: Adicionado um novo comando à camada! Prima `Shift+C` para abrir instantaneamente uma janela de "Conversa Direta". Isto fornece de imediato uma interface de conversação limpa e baseada em texto com a IA, sem necessitar de uma imagem ou documento como ponto de partida.
+- **Recuperação Perfeita do Histórico de Conversa**: Corrigido um erro grave onde a pressão da tecla `Espaço` para recordar o último resultado perdia o histórico de conversa subsequente. Agora, o extra rastreia globalmente a sua conversação. Se conversar, fechar a janela e premir `Espaço` para a recordar, todo o seu histórico de trocas de mensagens é perfeitamente restaurado! Funciona para Conversa Direta, Análise de Visão, Conversa sobre Documentos e Tradução.
+- **Descrições de Imagens Inline no OCR**: Adicionada uma funcionalidade opcional para descrever imagens no próprio texto durante o OCR de documentos. Pode ativar ou desativar esta definição nas definições de OCR do extra, nas opções do Leitor de Documentos antes da extração ou rapidamente na camada de Definições Rápidas.
+- **Tradução por Voz (`Control+T`)**: Adicionada uma nova e potente funcionalidade! Dite a sua fala e traduza-a e escreva-a instantaneamente através de IA com base nos seus idiomas de origem e destino configurados.
+- **Melhorias no Transferidor de Atualizações**: A janela de transferência de atualizações exibe agora corretamente o progresso da transferência em percentagens e foi corrigido um erro em que surgia uma mensagem fantasma "A transferir atualização" ao cancelar a instalação.
+- **Melhorias no Transferidor do eSpeak-NG**: Adicionado o acompanhamento do progresso em percentagem para as transferências do eSpeak-NG.
+- **Resiliência no OCR em Lote**: Corrigido um problema no OCR em lote de ficheiros PDF onde o processo parava se a chave de API ativa atingisse a quota a meio; agora muda automaticamente para a próxima chave disponível e retoma o processo.
+- **Suporte a CAPTCHA Visual**: Adicionado um suporte robusto para a resolução de CAPTCHAs visuais. Tenta resolver automaticamente desafios complexos de imagem, como o hCaptcha e reCAPTCHA, melhorando significativamente a acessibilidade em formulários web difíceis.
+- **Reformulação do Transcritor de Áudio**: O módulo Transcritor de Áudio foi completamente reconstruído e agora suporta ficheiros de áudio e vídeo. Possui 3 modos de operação distintos: "Transcrever (Idioma Original)", "Transcrever e Traduzir (Idioma de Destino)" e uma nova e potente opção "Dobrar e Traduzir (Idioma de Destino)" (exclusiva do Gemini) que gera uma dobragem de áudio traduzida da fala original.
+- **Números de Página Opcionais no Leitor de Documentos**: Adicionada uma nova definição para alternar a inclusão de números de página e separadores na saída de documentos com várias páginas. Pode gerir facilmente esta opção a partir das definições principais ou alterá-la na camada de Definições Rápidas. Esta funcionalidade aplica-se tanto à exportação de ficheiros de texto/HTML como à janela "Ver Formatado", permitindo-lhe ler documentos combinados sem interrupções.
+- **Gemini Live TTS Ilimitado para Descrições de Vídeo**: Agora pode selecionar o "Gemini Live TTS" como motor de voz ao gerar Narração de Áudio Sincronizada (MP3) para vídeos. Isto utiliza a API do Gemini Live para sintetizar audiodescrições de alta qualidade sem qualquer limite de carateres ou restrição de duração.
+- **Modularização da Base de Código**: Reestruturação da arquitetura do extra de um único ficheiro para uma estrutura modular multificheiro para melhorar a sua manutenção.
+- **Redesenho da Interface de Definições**: Redesenho completo da janela de Definições para utilizar uma interface moderna baseada em separadores em vez de uma disposição agrupada, proporcionando uma melhor organização e navegação mais fácil, mantendo todas as opções existentes.
+- **Registo em Ficheiro Dedicado e Global**: Adicionado um sistema opcional de registo global em ficheiro sob o novo separador de definições "Avançado". Captura automaticamente eventos operacionais, tráfego de API e erros em todos os módulos do extra num ficheiro dedicado (`vision_assistant.log`). Suporta níveis de detalhe configuráveis (Depuração, Informação, Aviso, Erro), períodos de retenção automatizados (1 hora a 90 dias) e abertura ou limpeza direta do registo a partir das definições sem qualquer impacto no desempenho ou interferência com o registo do NVDA.
+- **Acompanhamento do Progresso de Envio no Gemini**: Adicionados anúncios de progresso em percentagem e em tempo real ao enviar ficheiros grandes (vídeo, áudio, documentos) para a API do Google Gemini.
 
-## Alterações da versão 6.0
+## Alterações para 2026.07.15
 
-- **Introdução da Etiquetagem Semântica por IA:** Os utilizadores podem agora etiquetar permanentemente botões e ícones sem nome utilizando IA. Prima **L** para etiquetar o objeto atual do navegador (suportando tanto foco por Tab como navegação por objetos) ou **Shift+L** para analisar e etiquetar toda a aplicação de uma só vez.
-- **Gestão Inteligente de Etiquetas:** Adicionada uma nova caixa de diálogo totalmente acessível de Gestão de Etiquetas (através de **Shift+L** se existirem etiquetas) para visualizar, renomear ou eliminar etiquetas personalizadas em lote.
-- **Análise Direta de Ficheiros (Ignorar Caixa de Diálogo Abrir):** O extra é agora suficientemente inteligente para detetar se está atualmente focado num ficheiro PDF ou imagem no Explorador de Ficheiros do Windows. Premir **F (Ação Inteligente de Ficheiro)** ou **D (Leitor de Documentos)** num ficheiro selecionado irá processá-lo imediatamente, ignorando completamente a caixa de diálogo padrão "Abrir".
+- **Filtragem Inteligente de Modelos de API**: Reformulação completa do sistema de filtragem de modelos para utilizar uma abordagem pura de lista negra em vez de listas brancas. Adicionadas palavras-chave de filtragem mais fortes (`embedding`, `bison`, `gecko`, `audio`, `realtime`, `babbage`, `moderation`, `deep`, `antigravity`, `computer`) para garantir que o menu suspenso de modelos de conversa principal permaneça limpo e preparado para o futuro, mantendo todos os modelos especializados acessíveis na secção de Encaminhamento Avançado.
+- **Pesquisa no Encaminhamento Avançado**: Todos os menus suspensos do Encaminhamento Avançado de Modelos (OCR, STT, TTS, Operador, Vídeo, Em Direto) e o seletor de Variantes do eSpeak são agora totalmente pesquisáveis. Pode escrever rapidamente para filtrar e encontrar o modelo ou variante pretendido.
+- **Novos Atalhos na Camada de Comandos**:
+  - **Definições (`Alt + S`)**: Abre instantaneamente a janela de definições do Vision Assistant Pro.
+  - **Relatório de Chaves com Quota Esgotada (`Alt + Q`)**: Informa o número exato de chaves de API do Gemini que excederam a sua quota diária, identificando em que modelo específico esgotaram, e anuncia a hora exata da respetiva reinicialização.
+  - **Auditoria de Encaminhamento (`Alt + M`)**: Audita e anuncia a sua configuração atual do Encaminhamento Avançado, lendo quais os modelos que estão ativamente selecionados para tarefas especializadas (ignorando as definições padrão).
+- **Reformulação Completa do Analisador de Vídeo**: O Analisador de Vídeo foi completamente transformado! Anteriormente, fornecia apenas uma descrição básica de vídeos online. Agora, é um conjunto completo de processamento de vídeo adaptado para utilizadores cegos:
+  - **Gravação de Ecrã Local (`Control+V`)**: Agora pode gravar vídeos silenciosos diretamente a partir do seu ecrã. A IA analisará o segmento gravado e fornecerá uma descrição altamente detalhada da cena, disposição e ações.
+  - **Geração de Audiodescrição (SRT)**: O extra pode agora gerar guiões de Audiodescrição altamente detalhados (no formato padrão SRT) para vídeos, com sincronização inteligente por pausas para ancorar as descrições nas pausas naturais da faixa de áudio, e OCR literal para qualquer texto no ecrã.
+  - **Narração de Áudio Sincronizada (Exportação MP3)**: Para além de legendas em texto, o extra pode sintetizar a Audiodescrição em voz, misturá-la automaticamente com a faixa de áudio original do vídeo, aplicar atenuação de áudio (reduzir o volume de fundo durante as descrições) e exportar o resultado sincronizado final como um ficheiro MP3!
+  - **Ação de Ficheiro de Vídeo Inteligente**: Se focar um ficheiro de vídeo local e premir o atalho de vídeo, o extra detetá-lo-á automaticamente e processará o ficheiro diretamente.
+  - **Rastreio Avançado de Personagens**: A IA realiza agora uma análise prévia para extração de personagens. Constrói um dicionário global de personagens e rastreia as personagens com precisão, segmento a segmento, sem confundir identidades.
+  - **Configuração da Análise de Vídeo**: Adicionadas novas definições para controlar o tamanho dos blocos SRT, legendagem de personagens e avisos de responsabilidade.
+  - **Encaminhamento de Modelos Expandido**: Agora pode selecionar explicitamente modelos de vídeo especializados (`gemini_video_model`, `custom_video_model`) nas definições do Encaminhamento Avançado de Modelos.
+- **Gestão Inteligente de Quotas da API**: Gestão melhorada dos erros 429 (Limite Diário Excedido) ao rastrear as quotas por modelo. Se uma chave atingir o seu limite diário num modelo, entra inteligentemente em quarentena apenas para esse modelo específico, deixando a chave disponível para utilização com outros modelos.
 
-## Alterações da versão 5.6
+## Alterações para 7.0.0
 
-- **Adicionado Motor OCR "Nenhum (Extrair Camada de Texto)":** Os utilizadores podem agora extrair texto diretamente de PDFs pesquisáveis sem utilizar créditos de IA, melhorando significativamente a velocidade e privacidade para documentos baseados em texto.
-- **Precisão Refinada do Explorador de UI:** Melhorado o prompt do Explorador de UI para identificar melhor tipos de elementos (como Itens de Lista) e reportar corretamente estados como "(Marcado)", "(Selecionado)" ou "(Expandido)", ignorando componentes do sistema Windows como a Barra de Tarefas e o Relógio.
-- **Lembrete de Configuração Pós-Instalação:** Adicionada uma notificação após a instalação para orientar os utilizadores até ao menu de definições para configurarem as suas chaves API e preferências.
+- **Retomar Análises Incompletas**: Adicionada uma funcionalidade de retoma tanto para o Leitor de Documentos como para as Ações de Ficheiros Inteligentes. Se uma análise for interrompida, pode agora continuar a partir de onde parou em vez de recomeçar do zero.
+- **Nova Variável `[screen_fg_obj]`**: Adicionada uma variável de prompt personalizada para capturar uma imagem apenas da janela ativa em primeiro plano, em vez de todo o ecrã.
+- **Tentativas Inteligentes e Rotação de Chaves**: O extra tenta novamente de forma silenciosa até 5 vezes na mesma chave ao encontrar sobrecargas temporárias no servidor (como "alta procura" ou respostas malformadas). Se as tentativas falharem, muda automaticamente para a chave de API seguinte na sua lista.
+- **Deteção da Cortina de Ecrã**: Adicionada uma verificação para evitar tirar capturas de ecrã quando a Cortina de Ecrã está ativa (quer esteja ativada permanentemente ou temporariamente através de atalho). O extra irá avisá-lo e parar a ação, evitando que envie imagens pretas e desperdice tokens da API.
+- **Ajustes no Leitor de Documentos**: A janela de intervalo de páginas de PDF agora pré-seleciona automaticamente o idioma de destino predefinido a partir das definições do extra. Foi também melhorada a gestão de processos em segundo plano para garantir que param de forma limpa quando o leitor é fechado.
+- **Integração Nativa do OCR da Mistral**: Integrada a API nativa de OCR de Documentos da Mistral. Os documentos de várias páginas são automaticamente reunidos, enviados e processados em lotes utilizando o ponto de extremidade especializado `/v1/ocr` da Mistral, enquanto as imagens de uma página são processadas diretamente sem conversões para PDF desnecessárias [1].
+- **Manipuladores Dinâmicos de URL Personalizado**: A alteração do URL da API personalizada limpa agora instantaneamente a lista de modelos em cache e restaura a caixa de texto para introdução manual do modelo. Isto garante total compatibilidade com pontos de extremidade personalizados (como o Cloudflare AI Gateway) que não suportam o ponto de extremidade de listagem padrão `/v1/models`.
+- **Reformulação do Motor de Entrada do Operador de IA**: Reescrita completa do sistema subjacente de simulação de rato e teclado para o Operador de IA. Substituída a API legada `mouse_event` pela moderna API `SendInput` do Windows, proporcionando uma compatibilidade significativamente superior com aplicações modernas, janelas protegidas por UAC e ecrãs com alta densidade de píxeis (High-DPI).
+- **Correção de Operações de Arrastar e Largar**: As ações de arrastar e largar no Operador de IA são agora totalmente estáveis e fiáveis. O novo motor utiliza curvas suaves e naturais, posicionamento preciso do cursor, temporização otimizada e uma técnica inteligente de "pressionamento" para garantir que o Windows e as aplicações reconhecem e executam corretamente os gestos de arrastar e largar sem falhar a meio do caminho.
+- **Suporte a Múltiplos Monitores**: O Operador de IA suporta agora totalmente configurações de múltiplos monitores. Os movimentos do rato e cliques funcionam corretamente em todos os monitores através do sinalizador `MOUSEEVENTF_VIRTUALDESK`, garantindo um posicionamento preciso independentemente de em que monitor está a aplicação de destino.
+- **Simulação de Teclado Melhorada**: Melhorada a injeção de premiações de teclas para suportar totalmente as "Teclas Estendidas" (tais como teclas de Seta, Home, End, Page Up/Down, Insert, Delete e F1-F12). Isto garante que os comandos de navegação e atalhos enviados pelo Operador de IA funcionam sem falhas em todas as aplicações.
+- **Suporte a Imagens HEIC/HEIF**: Adicionado suporte nativo para os formatos de foto do iPhone. Agora pode selecionar diretamente ficheiros `.heic` e `.heif` para descrição por IA, OCR ou Leitura de Documentos sem necessidade de conversão prévia.
 
-## Alterações da versão 5.5.2
+## Alterações para 6.5.0
 
-- **Corrigido Problema de Escrita do Operador de IA:** Resolvido um erro onde a letra 'v' era escrita em vez de colar texto em determinados sistemas. Esta correção resolve conflitos de temporização que ocorriam durante elevada carga do sistema.
-- **Estabilidade Melhorada:** Adicionado tratamento robusto de erros para operações da área de transferência, evitando falhas do extra quando a área de transferência do sistema está temporariamente bloqueada por outras aplicações.
-- **Otimização de Temporização:** Ajustados atrasos internos para eventos de teclado de forma a garantir maior fiabilidade em diferentes velocidades de sistema e melhor compatibilidade com gestores de área de transferência de terceiros.
+- **Assistente em Direto**: Adicionada uma funcionalidade de assistente de ecrã e voz em tempo real, disponível exclusivamente para o provedor Google Gemini (ou provedores personalizados compatíveis com o Gemini). Inclui personalização interativa de voz e de profundidade do pensamento diretamente dentro da janela, com reconexão automática ao alterar as definições.
+- **Provedor de IA MiniMax**: Integrado o MiniMax como um provedor equivalente com suporte multimodal completo (conversa, visão, OCR), TTS personalizado utilizando mais de 300 vozes dinâmicas e remoção automática de blocos de raciocínio (ex.: `<think>...</think>`) das respostas.
+- **Tradução no Visualizador de Documentos**: Corrigida uma falha silenciosa de tradução para utilizadores do NVDA que não usam inglês, garantindo que o código de idioma padrão de 2 letras seja enviado para o Google Tradutor em vez do nome do idioma localizado.
+- **Nova Tentativa na Análise de PDF em Lote**: Implementada uma lógica de nova tentativa separada, silenciosa e altamente otimizada para a análise em lote de documentos PDF, evitando envios redundantes e janelas de erro incómodas durante as novas tentativas.
+- **Estado do Visualizador de Documentos**: Corrigido um erro onde o estado geral do extra (verificado via `I`) permanecia bloqueado em "Processamento em Lote Iniciado" durante análises longas de documentos.
+- **Resolução de Erro de Processos (Threading)**: Corrigida uma falha grave de asserção de processos `IsMain() failed in wxTimerImpl` ao abrir documentos a partir de uma tarefa em segundo plano, através da transição da fila de retorno da interface gráfica para `wx.CallAfter`.
 
-## Alterações da versão 5.5 (A Atualização de Automação)
+## Alterações para 6.1.2
 
-- **Operador de IA (Controlo Autónomo - Shift+A):** Esta é a joia da coroa da v5.5. O Vision Assistant Pro evoluiu de um assistente passivo para se tornar o seu **Operador de IA** pessoal. Não se limita a descrever o ecrã — assume o controlo.
-  - _Como funciona:_ Pode agora dar instruções verbais para operar o seu PC. Por exemplo, numa aplicação completamente inacessível onde o seu leitor de ecrã permanece silencioso, pode premir **Shift+A** e escrever: _"Clique no botão Definições"_ ou _"Encontre o campo de pesquisa, escreva 'Últimas Notícias' e prima Enter."_ A IA identifica visualmente os elementos, move o rato e executa a tarefa por si.
-  - _Nota de Desempenho:_ Esta funcionalidade está otimizada para **Gemini 3.0 Flash (Preview)**, oferecendo respostas incrivelmente rápidas e inteligentes capazes de lidar até com os esquemas de UI mais complexos.
-  - **⚠️ Aviso sobre Utilização da API:** Como o Operador de IA precisa de "ver" exatamente o que está a acontecer para ser preciso, envia uma captura de ecrã em alta resolução a cada passo. Tenha em atenção que a utilização frequente irá consumir a sua quota API muito mais rapidamente do que tarefas padrão baseadas em texto.
-- **Explorador Visual de UI (E):** Cansado de navegar por "botões sem etiqueta"? Prima **E** para ativar o Explorador de UI. A IA irá analisar toda a janela e gerar uma lista de todos os elementos clicáveis que encontrar — incluindo ícones, gráficos e menus. Basta escolher um item da lista e o Operador de IA clicará nele por si. É como ter uma "camada acessível" sobre qualquer aplicação.
-- **Ação Inteligente de Ficheiro Sensível ao Contexto (F):** A tecla "F" foi completamente reformulada. Já não assume que apenas pretende OCR. Ao selecionar uma única imagem, pergunta agora inteligentemente qual é a sua intenção: pode escolher uma **Descrição Visual Detalhada** para compreender a cena ou uma **Extração Estruturada de Texto (OCR)** para leitura. O menu adapta-se dinamicamente com base no tipo de ficheiro e no motor de IA ativo.
-- **Otimização do Núcleo:** Foi realizada uma limpeza profunda da lógica interna do extra, removendo funções antigas não utilizadas e código redundante. Isto resulta numa experiência mais leve, rápida e fiável para todos os utilizadores.
+- **Pré-Verificação de Etiquetas Duplicadas**: Corrigido um problema na etiquetagem individual onde a verificação de duplicados utilizava chaves de coordenadas antigas, fazendo com que o NVDA fizesse pedidos de IA duplicados para objetos já etiquetados em vez de anunciar a etiqueta existente.
+- **Conversa sobre Documentos para Provedores não-Gemini**: Corrigida uma verificação rigorosa da chave de API na Conversa sobre Documentos (`on_ask`) para garantir que os utilizadores de OpenAI, Groq ou provedores Personalizados locais (como o Ollama) possam conversar com documentos com sucesso sem serem bloqueados.
+- **Tradução Rápida de OCR do Chrome**: Restaurada a API de tradução gratuita e sem necessidade de chave para o OCR do Chrome. A tradução do texto extraído ignora agora a IA do Gemini, poupando quotas de API e acelerando o processo de tradução.
+- **Filtro Alfanumérico do CAPTCHA**: Corrigida a lógica de filtragem no resolutor de CAPTCHA para garantir que os carateres não alfanuméricos sejam devidamente limpos em todas as situações.
+- **Atualização da Ajuda da Camada de Comandos**: Corrigido o atalho do anúncio de estado no menu de ajuda de `L` para `I` e adicionados ambos os comandos de etiquetagem (`L` e `Shift+L`) à lista.
 
-## Alterações da versão 5.0
+## Alterações para 6.1.1
 
-- **Arquitetura Multi-Fornecedor:** Adicionado suporte completo para **OpenAI**, **Groq** e **Mistral** juntamente com o Google Gemini. Os utilizadores podem agora escolher o seu backend de IA preferido.
-- **Encaminhamento Avançado de Modelos:** Os utilizadores de fornecedores nativos (Gemini, OpenAI, etc.) podem agora selecionar modelos específicos a partir de listas suspensas para diferentes tarefas (OCR, STT, TTS).
-- **Configuração Avançada de Endpoint:** Os utilizadores do fornecedor Custom podem introduzir manualmente URLs específicos e nomes de modelos para controlo granular sobre servidores locais ou de terceiros.
-- **Visibilidade Inteligente de Funcionalidades:** O menu de definições e a UI do Leitor de Documentos ocultam agora automaticamente funcionalidades não suportadas (como TTS) com base no fornecedor selecionado.
-- **Obtenção Dinâmica de Modelos:** O extra obtém agora a lista de modelos disponíveis diretamente da API do fornecedor, garantindo compatibilidade com novos modelos assim que são lançados.
-- **OCR e Tradução Híbridos:** Otimizada a lógica para utilizar Google Translate pela rapidez ao usar OCR do Chrome, e tradução baseada em IA ao utilizar motores Gemini/Groq/OpenAI.
-- **"Nova Análise com IA" Universal:** A funcionalidade de nova análise do Leitor de Documentos deixou de estar limitada ao Gemini. Agora utiliza qualquer fornecedor de IA atualmente ativo para reprocessar páginas.
+- **Correção do Raciocínio dos Modelos Gemma 4**: Corrigido um problema com os modelos Gemma 4 onde todo o processo de pensamento interno era exibido como resposta final, ou onde desativar o raciocínio resultava em respostas em branco. O extra agora isola e extrai corretamente apenas a resposta de texto limpa final.
+- **OCR em Lote no Explorador de Ficheiros**: Agora pode selecionar várias fotos ou PDFs diretamente no Explorador de Ficheiros do Windows e extrair texto ou analisá-los em lote. O extra filtrará e processará automaticamente apenas os formatos de ficheiro suportados.
 
-## Alterações da versão 4.6
+## Alterações para 6.1.0
 
-- **Recuperação Interativa de Resultados:** Adicionada a tecla **Espaço** à camada de comandos, permitindo aos utilizadores reabrir instantaneamente a última resposta da IA numa janela de conversação para perguntas de seguimento, mesmo quando o modo "Saída Direta" está ativo.
-- **Centro da Comunidade no Telegram:** Adicionado um link para o "Canal Oficial do Telegram" no menu Ferramentas do NVDA, fornecendo uma forma rápida de acompanhar as últimas notícias, funcionalidades e lançamentos.
-- **Estabilidade Melhorada das Respostas:** Otimizada a lógica central das funcionalidades de Tradução, OCR e Visão para garantir desempenho mais fiável e uma experiência mais fluida ao utilizar saída direta por voz.
-- **Orientação Melhorada da Interface:** Atualizadas as descrições das definições e a documentação para explicar melhor o novo sistema de recuperação e como funciona juntamente com as definições de saída direta.
+- **Integração Universal de IA Local (Configurar IA Local)**: Adicionado um novo botão **"Configurar IA Local"** nas Definições do Provedor Personalizado. Os utilizadores podem agora configurar automaticamente motores de IA locais, incluindo **Ollama**, **LM Studio**, **Jan.ai** e **KoboldCPP** de forma instantânea.
+- **Avanço Inteligente de Proxy Local**: Reconstrução da lógica de ligação com um mecanismo avançado de avanço de proxy. O extra é agora inteligente o suficiente para ignorar completamente os proxies do sistema Windows para ligações de loopback locais, garantindo ligações estáveis à IA local mesmo quando a sua VPN ou modo TUN está ativo.
+- **Etiquetagem por IA Ultraestável (v2)**: Substituição das chaves de coordenadas absolutas de ecrã por um sistema híbrido e avançado de **Assinatura de Objeto**. As etiquetas dependem agora de identificadores programáticos (UIA **AutomationId** ou Win32 **ControlID**) e de coordenadas relativas à janela, tornando as suas etiquetas personalizadas completamente resistentes ao redimensionamento de janelas, à movimentação, à mudança de monitor ou à alteração de escala.
+- **Migração Automática e Transparente de Etiquetas**: A atualização é totalmente transparente. O extra migrará automaticamente as suas etiquetas antigas baseadas em coordenadas para o novo formato estável de impressão digital em segundo plano assim que focar o objeto pela primeira vez, com zero perda de dados.
 
-## Alterações da versão 4.5
+## Alterações para 6.0
 
-- **Gestor Avançado de Prompts:** Introduzida uma caixa de diálogo dedicada nas definições para personalizar prompts padrão do sistema e gerir prompts definidos pelo utilizador com suporte completo para adicionar, editar, reorganizar e pré-visualizar.
-- **Suporte Abrangente a Proxy:** Resolvidos problemas de conectividade de rede garantindo que as definições de proxy configuradas pelo utilizador são rigorosamente aplicadas a todos os pedidos API, incluindo tradução, OCR e geração de voz.
-- **Migração Automática de Dados:** Integrado um sistema inteligente de migração para atualizar automaticamente configurações antigas de prompts para um robusto formato JSON v2 na primeira execução, sem perda de dados.
-- **Compatibilidade Atualizada (2025.1):** Definida a versão mínima requerida do NVDA como 2025.1 devido às dependências de bibliotecas em funcionalidades avançadas como o Leitor de Documentos, garantindo desempenho estável.
-- **Interface de Definições Otimizada:** Simplificada a interface de definições reorganizando a gestão de prompts numa caixa de diálogo separada, proporcionando uma experiência mais limpa e acessível.
-- **Guia de Variáveis de Prompt:** Adicionado um guia integrado nas caixas de diálogo de prompts para ajudar os utilizadores a identificar e utilizar facilmente variáveis dinâmicas como [selection], [clipboard] e [screen_obj].
+- **Apresentação da Etiquetagem Semântica por IA**: Os utilizadores podem agora etiquetar permanentemente botões e ícones sem nome utilizando a IA. Prima **L** para etiquetar o objeto de navegação atual (suportando tanto o foco do Tab como a navegação por objetos) ou **Shift+L** para analisar e etiquetar toda a aplicação de uma só vez.
+- **Gestão Inteligente de Etiquetas**: Adicionada uma nova janela do Gestor de Etiquetas totalmente acessível (através de **Shift+L** se existirem etiquetas) para ver, renomear ou eliminar etiquetas personalizadas em lote.
+- **Análise Direta de Ficheiros (Avanço da Janela de Ficheiros)**: O extra é agora inteligente o suficiente para detetar se está focado num ficheiro PDF ou de imagem no Explorador de Ficheiros do Windows. Premir **F (Ação de Ficheiro Inteligente)** ou **D (Leitor de Documentos)** num ficheiro selecionado processá-lo-á imediatamente, ignorando completamente a janela padrão "Abrir".
 
-## Alterações da versão 4.0.3
+## Alterações para 5.6
 
-- **Maior Resiliência de Rede:** Adicionado um mecanismo automático de repetição para lidar melhor com ligações à internet instáveis e erros temporários do servidor, garantindo respostas de IA mais fiáveis.
-- **Caixa de Diálogo de Tradução Visual:** Introduzida uma janela dedicada para resultados de tradução. Os utilizadores podem agora navegar e ler traduções longas linha a linha, de forma semelhante aos resultados OCR.
-- **Visualização Formatada Agregada:** A funcionalidade "Ver Formatado" no Leitor de Documentos apresenta agora todas as páginas processadas numa única janela organizada com cabeçalhos claros de página.
-- **Fluxo OCR Otimizado:** Ignora automaticamente a seleção do intervalo de páginas para documentos de página única, tornando o processo de reconhecimento mais rápido e fluido.
-- **Estabilidade API Melhorada:** Alterado para um método de autenticação mais robusto baseado em cabeçalhos, resolvendo possíveis erros "Todas as Chaves API falharam" causados por conflitos de rotação de chaves.
-- **Correções de Erros:** Resolvidas várias falhas potenciais, incluindo um problema durante o encerramento do extra e um erro de foco na caixa de diálogo de conversação.
+- **Adicionado Motor OCR "Nenhum (Extrair Camada de Texto)"**: Os utilizadores podem agora extrair texto diretamente de PDFs pesquisáveis sem utilizar créditos de IA, melhorando significativamente a velocidade e a privacidade para documentos baseados em texto.
+- **Precisão Refinada do Explorador de UI**: Melhorada a prompt do Explorador de UI para identificar melhor os tipos de elementos (como Itens de Lista) e relatar com precisão estados como "(Ativado)", "(Selecionado)" ou "(Expandido)", ignorando os componentes do sistema Windows como a Barra de Tarefas e o Relógio.
+- **Lembrete de Configuração de Instalação**: Adicionada uma notificação após a instalação para guiar os utilizadores ao menu de definições para configurarem as suas chaves de API e preferências.
 
-## Alterações da versão 4.0.1
+## Alterações para 5.5.2
 
-- **Leitor Avançado de Documentos:** Um poderoso novo visualizador para PDFs e imagens com seleção de intervalo de páginas, processamento em segundo plano e navegação fluida com `Ctrl+PageUp/Down`.
-- **Novo Submenu Ferramentas:** Adicionado um submenu dedicado "Vision Assistant" no menu Ferramentas do NVDA para acesso mais rápido às funcionalidades principais, definições e documentação.
-- **Personalização Flexível:** Pode agora escolher o seu motor OCR e voz TTS preferidos diretamente no painel de definições.
-- **Suporte para Múltiplas Chaves API:** Adicionado suporte para múltiplas chaves Gemini API. Pode introduzir uma chave por linha ou separá-las por vírgulas nas definições.
-- **Motor OCR Alternativo:** Introduzido um novo motor OCR para garantir reconhecimento de texto fiável mesmo ao atingir limites de quota da API Gemini.
-- **Rotação Inteligente de Chaves API:** Alterna automaticamente e memoriza a chave API funcional mais rápida para contornar limites de quota.
-- **Documento para MP3/WAV:** Integrada capacidade de gerar e guardar ficheiros de áudio de alta qualidade nos formatos MP3 (128kbps) e WAV diretamente dentro do leitor.
-- **Suporte para Stories do Instagram:** Adicionada a capacidade de descrever e analisar Stories do Instagram utilizando os seus URLs.
-- **Suporte TikTok:** Introduzido suporte para vídeos TikTok, permitindo descrição visual completa e transcrição áudio dos clipes.
-- **Caixa de Diálogo de Atualização Redesenhada:** Inclui uma nova interface acessível com caixa de texto deslocável para leitura clara das alterações de versão antes da instalação.
-- **Estado e UX Unificados:** Normalizadas as caixas de diálogo de ficheiros em todo o extra e melhorado o comando 'L' para reportar progresso em tempo real.
+- **Correção na Escrita do Operador de IA:** Corrigido um erro onde a letra 'v' era digitada em vez de colar o texto em determinados sistemas. Esta correção resolve conflitos de temporização que ocorriam durante uma carga elevada do sistema.
+- **Estabilidade Melhorada:** Adicionada uma gestão de erros robusta para operações na área de transferência para evitar falhas do extra quando a área de transferência do sistema está temporariamente bloqueada por outras aplicações.
+- **Otimização de Temporização:** Ajustados os atrasos internos para eventos de teclado de modo a garantir maior fiabilidade em diferentes velocidades do sistema e melhor compatibilidade com Gestores da Área de Transferência de terceiros.
 
-## Alterações da versão 3.6.0
+## Alterações para 5.5 (A Atualização de Automação)
 
-- **Sistema de Ajuda:** Adicionado um comando de ajuda (`H`) dentro da Camada de Comandos para fornecer uma lista de fácil acesso com todos os atalhos e respetivas funções.
-- **Análise de Vídeo Online:** Expandido o suporte para incluir vídeos do **Twitter (X)**. Também melhorada a deteção de URLs e estabilidade para uma experiência mais fiável.
-- **Contribuição para o Projeto:** Adicionada uma caixa de diálogo opcional de donativo para utilizadores que desejem apoiar futuras atualizações e o crescimento contínuo do projeto.
+- **Operador de IA (Controlo Autónomo - Shift+A):** Esta é a joia da coroa da v5.5. O Vision Assistant Pro passou de um assistente passivo a o seu **Operador de IA** pessoal. Não se limita a descrever o ecrã — assume o comando.
+  - _Como funciona:_ Pode agora dar instruções por texto/voz para operar o seu PC. Por exemplo, numa aplicação completamente inacessível onde o seu leitor de ecrã permanece em silêncio, pode premir **Shift+A** e escrever: _"Clica no botão Definições"_ ou _"Procura o campo de pesquisa, escreve 'Últimas Notícias' e prima Enter."_ A IA identifica visualmente os elementos, move o rato e executa a tarefa por si.
+  - _Nota de Desempenho:_ Esta funcionalidade está otimizada para o **Gemini 3.0 Flash (Preview)**, oferecendo respostas incrivelmente rápidas e inteligentes que conseguem lidar até com as disposições de interface de utilizador mais complexas.
+  - **⚠️ Aviso de Utilização de API:** Como o Operador de IA precisa de "ver" exatamente o que está a acontecer para ser preciso, envia uma captura de ecrã de alta resolução a cada passo. Tenha em conta que a utilização frequente consumirá a sua quota de API muito mais rapidamente do que as tarefas normais de texto.
+- **Explorador Visual de UI (E):** Cansado de navegar por "botões sem etiqueta"? Prima **E** para ativar o Explorador de UI. A IA analisará toda a janela e gerará uma lista de cada elemento clicável que encontrar — incluindo ícones, gráficos e menus. Basta escolher um item da lista e o Operador de IA clicará nele por si. É como ter uma "camada acessível" sobre qualquer aplicação.
+- **Ação de Ficheiro Inteligente com Sensibilidade ao Contexto (F):** A tecla "F" foi completamente reformulada. Já não assume que quer apenas OCR. Ao selecionar uma imagem, pergunta agora inteligentemente qual a sua intenção: pode escolher uma **Descrição Visual Detalhada** para compreender a cena ou uma **Extração de Texto Estruturado (OCR)** para leitura. O menu adapta-se dinamicamente com base no tipo de ficheiro e no seu motor de IA ativo.
+- **Otimização Principal:** Realizámos uma limpeza profunda da lógica interna do extra, removendo funções legadas não utilizadas e código redundante. Isto resulta numa experiência mais leve, rápida e fiável para todos os utilizadores.
 
-## Alterações da versão 3.5.0
+## Alterações para 5.0
 
-\* \*\*Camada de Comandos:\*\* Introduzido um sistema de Camada de Comandos (por defeito: `NVDA+Shift+V`) para agrupar atalhos sob uma única tecla mestre. Por exemplo, em vez de premir `NVDA+Control+Shift+T` para tradução, passa agora a premir `NVDA+Shift+V` seguido de `T`. \* \*\*Análise de Vídeo Online:\*\* Adicionada uma nova funcionalidade para analisar vídeos do YouTube e Instagram diretamente através de um URL.
+- **Arquitetura Multiprovedor**: Adicionado suporte total para **OpenAI**, **Groq** e **Mistral**, em conjunto com o Google Gemini. Os utilizadores podem agora escolher a sua plataforma de IA preferida.
+- **Encaminhamento Avançado de Modelos**: Os utilizadores de provedores nativos (Gemini, OpenAI, etc.) podem agora selecionar modelos específicos num menu suspenso para diferentes tarefas (OCR, STT, TTS).
+- **Configuração Avançada de Pontos de Extremidade**: Os utilizadores de provedores personalizados podem introduzir manualmente URLs específicos e nomes de modelos para um controlo detalhado sobre servidores locais ou de terceiros.
+- **Visibilidade Inteligente de Funcionalidades**: O menu de definições e a interface do Leitor de Documentos ocultam agora automaticamente as funcionalidades não suportadas (como o TTS) com base no provedor selecionado.
+- **Obtenção Dinâmica de Modelos**: O extra obtém agora a lista de modelos disponíveis diretamente da API do provedor, garantindo compatibilidade com novos modelos assim que são lançados.
+- **OCR e Tradução Híbridos**: Otimizada a lógica para utilizar o Google Tradutor para maior velocidade ao usar o OCR do Chrome, e tradução baseada em IA ao utilizar os motores Gemini/Groq/OpenAI.
+- **"Analisar Novamente com IA" Universal**: A funcionalidade de reanalisar do Leitor de Documentos já não está limitada ao Gemini. Agora utiliza qualquer provedor de IA que esteja ativo no momento para reprocessar as páginas.
 
-## Alterações da versão 3.1.0
+## Alterações para 4.6
 
-- **Modo de Saída Direta:** Adicionada uma opção para ignorar a caixa de diálogo de conversação e ouvir respostas da IA diretamente através de voz para uma experiência mais rápida e fluida.
-- **Integração com a Área de Transferência:** Adicionada uma nova definição para copiar automaticamente respostas da IA para a área de transferência.
+- **Recuperação Interativa de Resultados:** Adicionada a tecla **Espaço** à camada de comandos, permitindo aos utilizadores reabrir instantaneamente a última resposta da IA numa janela de conversa para perguntas adicionais, mesmo quando o modo "Saída Direta" está ativo.
 
-## Alterações da versão 3.0
+- **Central da Comunidade no Telegram:** Adicionada uma ligação para o "Canal Oficial no Telegram" no menu Ferramentas do NVDA, proporcionando uma forma rápida de se manter atualizado com as últimas notícias, funcionalidades e lançamentos.
+- **Estabilidade de Resposta Melhorada:** Otimizada a lógica principal para as funcionalidades de Tradução, OCR e Visão para garantir um desempenho mais fiável e uma experiência mais fluida ao utilizar a saída direta por voz.
+- **Orientação de Interface Melhorada:** Atualizadas as descrições de definições e documentação para explicar melhor o novo sistema de recuperação de histórico e como funciona juntamente com as definições de saída direta.
 
-- **Novos Idiomas:** Adicionadas traduções em **Persa** e **Vietnamita**.
-- **Modelos de IA Expandidos:** Reorganizada a lista de seleção de modelos com prefixos claros (`[Free]`, `[Pro]`, `[Auto]`) para ajudar os utilizadores a distinguir entre modelos gratuitos e limitados por taxa (pagos). Adicionado suporte para **Gemini 3.0 Pro** e **Gemini 2.0 Flash Lite**.
-- **Estabilidade do Ditado:** Melhorada significativamente a estabilidade do Ditado Inteligente. Adicionada uma verificação de segurança para ignorar clipes áudio inferiores a 1 segundo, prevenindo alucinações da IA e erros vazios.
-- **Gestão de Ficheiros:** Corrigido um problema em que o envio de ficheiros com nomes não ingleses falhava.
-- **Otimização de Prompts:** Melhorada a lógica de Tradução e estruturados os resultados de Visão.
+## Alterações para 4.5
 
-## Alterações da versão 2.9
+- **Gestor Avançado de Prompts:** Introduzida uma janela de gestão dedicada nas definições para personalizar as prompts padrão do sistema e gerir prompts definidas pelo utilizador, com suporte total para adicionar, editar, reordenar e pré-visualizar.
 
-- **Adicionadas traduções em francês e turco.**
-- **Visualização Formatada:** Adicionado um botão "Ver Formatado" nas caixas de diálogo de conversação para visualizar a conversa com estilo adequado (Cabeçalhos, Negrito, Código) numa janela navegável padrão.
-- **Definição Markdown:** Adicionada uma nova opção "Limpar Markdown no Chat" nas Definições. Ao desmarcar esta opção, os utilizadores poderão ver sintaxe Markdown em bruto (por exemplo, `**`, `#`) na janela de conversação.
-- **Gestão de Caixas de Diálogo:** Corrigido um problema em que as janelas "Refinar Texto" ou conversação abriam múltiplas vezes ou não recebiam corretamente o foco.
-- **Melhorias de UX:** Normalizados os títulos das caixas de diálogo de ficheiros para "Abrir" e removidos anúncios redundantes por voz (por exemplo, "A abrir menu...") para uma experiência mais fluida.
+- **Suporte Abrangente a Proxy:** Resolvidos problemas de ligação à rede garantindo que as definições de proxy configuradas pelo utilizador são rigorosamente aplicadas a todos os pedidos de API, incluindo tradução, OCR e geração de voz.
+- **Migração Automática de Dados:** Integrado um sistema de migração inteligente para atualizar automaticamente configurações de prompts antigas para um formato JSON v2 robusto logo na primeira execução, sem perda de dados.
+- **Compatibilidade Atualizada (2025.1):** Definida a versão mínima do NVDA requerida para 2025.1 devido a dependências de bibliotecas em funcionalidades avançadas como o Leitor de Documentos, garantindo um desempenho estável.
+- **Interface de Definições Otimizada:** Simplificada a interface de definições ao reorganizar a gestão de prompts numa janela separada, proporcionando uma experiência de utilização mais limpa e acessível.
+- **Guia de Variáveis de Prompt:** Adicionado um guia integrado dentro das janelas de prompt para ajudar os utilizadores a identificar e utilizar facilmente variáveis dinâmicas como [selection], [clipboard] e [screen_obj].
 
-## Alterações da versão 2.8
+## Alterações para 4.0.3
 
-- Adicionada tradução italiana.
-- **Relatório de Estado:** Adicionado um novo comando (NVDA+Control+Shift+I) para anunciar o estado atual do extra (por exemplo, "A carregar...", "A analisar...").
-- **Exportação HTML:** O botão "Guardar Conteúdo" nas caixas de diálogo de resultados guarda agora a saída como ficheiro HTML formatado, preservando estilos como cabeçalhos e texto a negrito.
-- **UI de Definições:** Melhorado o esquema do painel de Definições com agrupamento acessível.
+- **Resiliência de Rede Melhorada:** Adicionado um mecanismo de nova tentativa automática para lidar melhor com ligações de Internet instáveis e erros temporários do servidor, garantindo respostas de IA mais fiáveis.
+
+- **Janela de Tradução Visual:** Introduzida uma janela dedicada para os resultados de tradução. Os utilizadores podem agora navegar facilmente e ler traduções longas linha a linha, de forma semelhante aos resultados de OCR.
+- **Vista Formatada Agregada:** A funcionalidade "Ver Formatado" no Leitor de Documentos apresenta agora todas as páginas processadas numa única janela organizada, com cabeçalhos de página claros.
+- **Fluxo de Trabalho de OCR Otimizado:** Ignora automaticamente a seleção de intervalo de páginas para documentos de página única, tornando o processo de reconhecimento mais rápido e fluido.
+- **Estabilidade de API Melhorada:** Alterado para um método de autenticação baseado em cabeçalho mais robusto, resolvendo potenciais erros de "Todas as chaves de API falharam" causados por conflitos na rotação de chaves.
+- **Correção de Erros:** Resolvidas várias falhas potenciais, incluindo um problema durante o encerramento do extra e um erro de foco na janela de conversa.
+
+## Alterações para 4.0.1
+
+- **Leitor Avançado de Documentos:** Um novo e potente visualizador de PDF e imagens com seleção de intervalo de páginas, processamento em segundo plano e navegação fluida com `Ctrl+PageUp/PageDown`.
+
+- **Novo Submenu de Ferramentas:** Adicionado um submenu dedicado "Vision Assistant" no menu Ferramentas do NVDA para um acesso mais rápido às funcionalidades principais, definições e documentação.
+- **Personalização Flexível:** Pode agora escolher o seu motor de OCR e voz TTS preferidos diretamente no painel de definições.
+- **Suporte a Múltiplas Chaves de API:** Adicionado suporte para várias chaves de API do Gemini. Pode introduzir uma chave por linha ou separá-las por vírgulas nas definições.
+- **Motor OCR Alternativo:** Introduzido um novo motor de OCR para garantir o reconhecimento de texto fiável mesmo ao atingir os limites de quota da API do Gemini.
+- **Rotação Inteligente de Chaves de API:** Muda automaticamente para a chave de API funcional mais rápida e memoriza-a para ultrapassar os limites de quota.
+- **Documento para MP3/WAV:** Capacidade integrada para gerar e guardar ficheiros de áudio de alta qualidade em formatos MP3 (128kbps) e WAV diretamente dentro do leitor.
+- **Suporte a Histórias do Instagram:** Adicionada a capacidade de descrever e analisar Histórias do Instagram utilizando os seus URLs.
+- **Suporte ao TikTok:** Introduzido suporte para vídeos do TikTok, permitindo uma descrição visual completa e transcrição de áudio dos vídeos.
+- **Janela de Atualização Redesenhada:** Apresenta uma nova interface acessível com uma caixa de texto com deslocamento para ler claramente as alterações de versão antes de instalar.
+- **Estado e Experiência Unificados:** Janelas de ficheiro padronizadas em todo o extra e melhoria do comando 'L' para reportar o progresso em tempo real.
+
+## Alterações para 3.6.0
+
+- **Sistema de Ajuda:** Adicionado um comando de ajuda (`H`) na Camada de Comandos para disponibilizar uma lista de fácil acesso com todos os atalhos e as suas respetivas funções.
+
+- **Análise de Vídeos Online:** Expandido o suporte para incluir vídeos do **Twitter (X)**. Também foi melhorada a deteção de URLs e a estabilidade para uma experiência mais fiável.
+- **Contribuição para o Projeto:** Adicionada uma janela opcional de doação para utilizadores que desejem apoiar as futuras atualizações e o crescimento contínuo do projeto.
+
+## Alterações para 3.5.0
+
+\*   \*\*Camada de Comandos:\*\* Introduzido um sistema de Camada de Comandos (predefinição: `NVDA+Shift+V`) para agrupar atalhos sob uma única tecla principal. Por exemplo, em vez de premir `NVDA+Control+Shift+T` para traduzir, passa a premir `NVDA+Shift+V` seguido de `T`.
+\*   \*\*Análise de Vídeos Online:\*\* Adicionada uma nova funcionalidade para analisar vídeos do YouTube e Instagram diretamente através do fornecimento de um URL.
+
+## Alterações para 3.1.0
+
+- **Modo de Saída Direta:** Adicionada uma opção para ignorar a janela de conversa e ouvir as respostas da IA diretamente por voz, proporcionando uma experiência mais rápida e fluida.
+
+- **Integração com a Área de Transferência:** Adicionada uma nova definição para copiar automaticamente as respostas da IA para a área de transferência.
+
+## Alterações para 3.0
+
+- **Novos Idiomas:** Adicionadas traduções para **Persa** e **Vietnamita**.
+- **Modelos de IA Expandidos:** Reorganizada a lista de seleção de modelos com prefixos claros (`[Free]`, `[Pro]`, `[Auto]`) para ajudar os utilizadores a distinguir entre modelos gratuitos e modelos com limite de utilização (pagos). Adicionado suporte para o **Gemini 3.0 Pro** e **Gemini 2.0 Flash Lite**.
+- **Estabilidade do Ditado:** Melhoria significativa na estabilidade do Ditado Inteligente. Adicionada uma verificação de segurança para ignorar clipes de áudio com menos de 1 segundo, evitando alucinações da IA e erros de resposta em branco.
+- **Gestão de Ficheiros:** Corrigido um problema em que o envio de ficheiros com nomes em carateres não-ingleses falhava.
+- **Otimização de Prompts:** Melhorada a lógica de Tradução e a estrutura dos resultados de Visão.
+
+## Alterações para 2.9
+
+- **Adicionadas traduções para Francês e Turco.**
+- **Vista Formatada:** Adicionado o botão "Ver Formatado" nas janelas de conversa para visualizar a conversação com a devida formatação (Cabeçalhos, Negrito, Código) numa janela navegável padrão.
+- **Definição de Markdown:** Adicionada a nova opção "Limpar Markdown na Conversa" nas Definições. Desativar esta opção permite aos utilizadores verem a sintaxe Markdown pura (ex.: `**`, `#`) na janela de conversa.
+- **Gestão de Janelas:** Corrigido um problema em que as janelas de "Refinar Texto" ou de conversa abriam múltiplas vezes ou falhavam ao colocar o foco corretamente.
+- **Melhorias de Experiência de Utilizador:** Padronizados os títulos das janelas de ficheiros para "Abrir" e removidos anúncios de voz redundantes (ex.: "A abrir menu...") para uma navegação mais fluida.
+
+## Alterações para 2.8
+
+- Adicionada tradução para Italiano.
+
+- **Relatório de Estado:** Adicionado um novo comando (NVDA+Control+Shift+I) para anunciar o estado atual do extra (ex.: "A enviar...", "A analisar...").
+- **Exportação em HTML:** O botão "Guardar Conteúdo" nas janelas de resultados guarda agora a saída como um ficheiro HTML formatado, preservando estilos como cabeçalhos e texto em negrito.
+- **Interface de Definições:** Melhorada a disposição do painel de Definições com agrupamentos acessíveis.
 - **Novos Modelos:** Adicionado suporte para gemini-flash-latest e gemini-flash-lite-latest.
-- **Idiomas:** Adicionado Nepalês aos idiomas suportados.
-- **Lógica do Menu Refinar:** Corrigido um erro crítico onde os comandos "Refinar Texto" falhavam se o idioma da interface do NVDA não fosse inglês.
-- **Ditado:** Melhorada a deteção de silêncio para evitar saída incorreta de texto quando não existe fala.
-- **Definições de Atualização:** "Verificar atualizações ao iniciar" encontra-se agora desativado por defeito para cumprir as políticas da Loja de Extras.
-- Limpeza de código.
+- **Idiomas:** Adicionado o Nepalês à lista de idiomas suportados.
+- **Lógica do Menu de Refinamento:** Corrigido um erro crítico em que os comandos de "Refinar Texto" falhavam se o idioma da interface do NVDA não fosse o Inglês.
+- **Ditado:** Melhorada a deteção de silêncio para evitar a geração de texto incorreto quando não há entrada de voz.
+- **Definições de Atualização:** A opção "Procurar atualizações ao iniciar" está agora desativada por predefinição para cumprir as políticas da Loja de Extras do NVDA.
+- Limpeza de Código.
 
-## Alterações da versão 2.7
+## Alterações para 2.7
 
-- Migrada a estrutura do projeto para o modelo oficial de extras NV Access para melhor conformidade com normas.
-- Implementada lógica automática de repetição para erros HTTP 429 (Limite de Taxa) para garantir fiabilidade durante tráfego elevado.
-- Otimizados prompts de tradução para maior precisão e melhor tratamento da lógica "Smart Swap".
-- Atualizada a tradução russa.
+- Migrada a estrutura do projeto para o modelo oficial de extras da NV Access para melhor conformidade com os padrões.
 
-## Alterações da versão 2.6
+- Implementada lógica de nova tentativa automática para erros HTTP 429 (Limite de Taxa Excedido) para garantir a fiabilidade durante períodos de tráfego elevado.
+- Otimizadas as prompts de tradução para maior precisão e melhor gestão da lógica de "Troca Inteligente".
+- Atualizada a tradução para Russo.
 
-- Adicionado suporte para tradução russa (Obrigado ao nvda-ru).
-- Atualizadas mensagens de erro para fornecer feedback mais descritivo relativamente à conectividade.
-- Alterado o idioma de destino por defeito para inglês.
+## Alterações para 2.6
 
-## Alterações da versão 2.5
+- Adicionado suporte à tradução em Russo (Agradecimentos a nvda-ru).
 
-- Adicionado comando OCR Nativo de Ficheiros (NVDA+Control+Shift+F).
-- Adicionado botão "Guardar Conversação" nas caixas de diálogo de resultados.
-- Implementado suporte completo de localização (i18n).
-- Migrado feedback áudio para o módulo nativo de tons do NVDA.
-- Alterado para Gemini File API para melhor tratamento de ficheiros PDF e áudio.
-- Corrigida falha ao traduzir texto contendo chavetas.
+- Atualizadas as mensagens de erro para fornecer informações mais descritivas relativamente à conetividade.
+- Alterado o idioma de destino predefinido para Inglês.
 
-## Alterações da versão 2.1.1
+## Alterações para 2.5
 
-- Corrigido um problema em que a variável [file_ocr] não funcionava corretamente dentro de Prompts Personalizados.
+- Adicionado o Comando de OCR de Ficheiro Nativo (NVDA+Control+Shift+F).
 
-## Alterações da versão 2.1
+- Adicionado o botão "Guardar Conversa" às janelas de resultados.
+- Implementado suporte completo de internacionalização (i18n).
+- Migrado o feedback sonoro para o módulo nativo de tons do NVDA.
+- Alterado para a API de Ficheiros do Gemini para um melhor manuseamento de ficheiros PDF e de áudio.
+- Corrigida uma falha no sistema ao traduzir texto que contivesse chavetas.
 
-- Normalizados todos os atalhos para utilizar NVDA+Control+Shift para eliminar conflitos com o esquema Laptop do NVDA e atalhos do sistema.
+## Alterações para 2.1.1
 
-## Alterações da versão 2.0
+- Corrigido um problema em que a variável [file_ocr] não funcionava corretamente dentro das Prompts Personalizadas.
 
-- Implementado sistema integrado de Atualização Automática.
-- Adicionada Cache Inteligente de Tradução para recuperação instantânea de textos previamente traduzidos.
-- Adicionada Memória de Conversação para refinar resultados contextualmente nas caixas de diálogo de conversação.
-- Adicionado comando dedicado de Tradução da Área de Transferência (NVDA+Control+Shift+Y).
-- Otimizados prompts de IA para reforçar estritamente a saída no idioma de destino.
-- Corrigida falha causada por caracteres especiais no texto introduzido.
+## Alterações para 2.1
 
-## Alterações da versão 1.5
+- Padronizados todos os atalhos para utilizar NVDA+Control+Shift de modo a eliminar conflitos com a disposição para Portátil do NVDA e teclas de atalho do sistema.
+
+## Alterações para 2.0
+
+- Implementado um sistema integrado de Atualização Automática.
+
+- Adicionada a Cache de Tradução Inteligente para recuperação instantânea de texto traduzido anteriormente.
+- Adicionada Memória de Conversação para refinar contextualmente os resultados nas janelas de conversa.
+- Adicionado comando dedicado para Tradução da Área de Transferência (NVDA+Control+Shift+Y).
+- Otimizadas as prompts da IA para impor rigorosamente a saída no idioma de destino.
+- Corrigida uma falha causada por carateres especiais no texto de entrada.
+
+## Alterações para 1.5
 
 - Adicionado suporte para mais de 20 novos idiomas.
-- Implementada Caixa de Diálogo Interativa de Refinamento para perguntas de seguimento.
-- Adicionada funcionalidade nativa de Ditado Inteligente.
-- Adicionada categoria "Vision Assistant" à caixa de diálogo Gestos de Entrada do NVDA.
-- Corrigidas falhas COMError em aplicações específicas como Firefox e Word.
-- Adicionado mecanismo automático de repetição para erros de servidor.
 
-## Alterações da versão 1.0
+- Implementada a Janela Interativa de Refinamento para perguntas adicionais.
+- Adicionada a funcionalidade nativa de Ditado Inteligente.
+- Adicionada a categoria "Vision Assistant" à janela de Gestos de Entrada do NVDA.
+- Corrigidas falhas por COMError em aplicações específicas como o Firefox e o Word.
+- Adicionado mecanismo de nova tentativa automática para erros do servidor.
+
+## Alterações para 1.0
 
 - Lançamento inicial.
